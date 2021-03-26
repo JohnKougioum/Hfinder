@@ -1,5 +1,5 @@
-<h1 align="center">Session 1</h13>
-<h6 align="center">Friday 12/03/2021</h6>
+<h1 align="center">Session 2</h13>
+<h6 align="center">Wednesday 17/03/2021</h6>
 
 #### Συμμετέχοντες
 
@@ -7,13 +7,13 @@
 - [Μαλούδης Απόστολος](https://github.com/tolismaloudis)
 - [Λαφιώτης Νικόλαος](https://github.com/nikosalin)
 - [Θανασούλης Ιωάννης](https://github.com/JohnThanassoulis)
+- [Κωνσταντινίδης Βασίλειος](https://github.com/vasilis2000)
 
 #### Δραστηριότητες
 
-1. Δημιουργία Discord ομάδας.
+1. Οριστικοποιήση των ρόλων.
 
-2. Γνωριμίες μεταξύ των μελών.
+2. Συζήτηση λεπτομέριων του πρότζεκτ:
 
-3. Συζήτηση ρόλων.
-
-4. Συζήτηση ιδεών σχετικά με το project.
+   - Συζήτηση βασικών functional requirements.
+   - Όνομα της εφαρμογής.
