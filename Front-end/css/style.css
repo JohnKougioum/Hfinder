@@ -305,16 +305,29 @@ nav a {
   font-size: 15px;
 }
 
-.main .wrapper .wrapper-container .wrapper-container-content button {
+.main .wrapper .wrapper-container .wrapper-container-content a {
+  display: block;
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 150px;
   margin-top: 3rem;
-  width: 45%;
-  border: none;
+  border: 1px solid #343434;
   font-size: 16px;
   color: white;
   padding: 0.5rem;
   background-color: #343434;
   border-radius: 10px;
   outline: none;
+  text-decoration: none;
+  -webkit-transition: 0.15s ease-in-out;
+  transition: 0.15s ease-in-out;
+}
+
+.main .wrapper .wrapper-container .wrapper-container-content a:hover {
+  color: #343434;
+  background-color: white;
 }
 
 .footer-content {

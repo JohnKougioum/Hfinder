@@ -258,16 +258,27 @@ nav {
           font-size: 15px;
         }
 
-        button {
+        a {
+          display: block;
+          position: relative;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 150px;
           margin-top: 3rem;
-          width: 45%;
-          border: none;
+          border: 1px solid $main-dark;
           font-size: 16px;
           color: white;
           padding: 0.5rem;
           background-color: $main-dark;
           border-radius: 10px;
           outline: none;
+          text-decoration: none;
+          transition: 0.15s ease-in-out;
+        }
+
+        a:hover {
+          color: $main-dark;
+          background-color: white;
         }
       }
     }
