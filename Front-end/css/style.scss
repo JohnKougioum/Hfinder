@@ -23,7 +23,7 @@ header {
 
 nav {
   margin-left: -5%;
-  margin-right: -5%;
+  margin-right: -6%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -137,7 +137,53 @@ nav {
 
 .main {
   width: 100%;
-  height: 30vh;
+  height: 100%;
+
+  .progressbar {
+    width: 100%;
+    display: flex;
+    margin-top: 3em;
+    margin-bottom: 4em;
+    overflow: hidden;
+
+    .progessbar-wrapper {
+      width: 100%;
+      margin-left: 14%;
+      margin-right: 14%;
+      display: flex;
+      justify-content: space-around;
+
+      .progressbar-container {
+        margin: 2rem;
+
+        .progressbar-container-text {
+          text-align: center;
+          height: 10%;
+        }
+
+        .progressbar-container-circle {
+          margin-top: 1.5rem;
+          position: relative;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background-color: $main-dark;
+
+          span {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: block;
+            width: 25rem;
+            border: 2px solid $main-dark;
+            background-color: $main-dark;
+          }
+        }
+      }
+    }
+  }
 
   .covid-banner {
     display: block;
@@ -184,9 +230,52 @@ nav {
       }
     }
   }
+
+  .wrapper {
+    margin-top: 5em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 18rem);
+    grid-gap: 3%;
+    justify-content: center;
+
+    .wrapper-container {
+      overflow: hidden;
+      box-shadow: 0px 2px 8px 0px #b0bec5;
+      text-align: center;
+      border-radius: 5px;
+      position: relative;
+      margin: 0.5rem;
+
+      .wrapper-container-icon {
+        margin-top: 3rem;
+      }
+
+      .wrapper-container-content {
+        margin: 3.8rem 0rem 2rem 0rem;
+
+        p {
+          margin: 1.3rem 2.5rem;
+          font-size: 15px;
+        }
+
+        button {
+          margin-top: 3rem;
+          width: 45%;
+          border: none;
+          font-size: 16px;
+          color: white;
+          padding: 0.5rem;
+          background-color: $main-dark;
+          border-radius: 10px;
+          outline: none;
+        }
+      }
+    }
+  }
 }
 
 .footer-content {
+  margin-top: 10%;
   width: 100%;
   padding: 16px;
   display: flex;
@@ -223,6 +312,159 @@ nav {
 
     * {
       padding-bottom: 6px;
+    }
+  }
+}
+
+// Media Queries
+
+@media screen and (max-width: 919px) {
+  .wrapper-container:last-child {
+    left: 50%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .wrapper-container:last-child {
+    left: 0%;
+  }
+}
+
+@media screen and (max-width: 762px) {
+  .wrapper {
+    grid-gap: 0% !important;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .footer-content {
+    font-size: 15px;
+    flex-direction: column;
+    justify-content: center;
+
+    .footer-content-left {
+      margin-left: 0%;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .footer-content-right {
+      margin-right: 0%;
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .progressbar-container-text {
+    margin-bottom: 3em;
+  }
+}
+
+@media screen and (min-width: 300px) {
+  .main {
+    .progressbar {
+      .progessbar-wrapper {
+        .progressbar-container {
+          .progressbar-container-circle {
+            .progressbar-container-circle-line {
+              width: 11rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .main {
+    .progressbar {
+      .progessbar-wrapper {
+        .progressbar-container {
+          .progressbar-container-circle {
+            .progressbar-container-circle-line {
+              width: 14rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 610px) {
+  .main {
+    .progressbar {
+      .progessbar-wrapper {
+        margin-left: 0;
+        margin-right: 0;
+        font-size: 11px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .main {
+    .progressbar {
+      .progessbar-wrapper {
+        .progressbar-container {
+          .progressbar-container-circle {
+            .progressbar-container-circle-line {
+              width: 16rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .main {
+    .progressbar {
+      .progessbar-wrapper {
+        .progressbar-container {
+          .progressbar-container-circle {
+            .progressbar-container-circle-line {
+              width: 19rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1185px) {
+  .main {
+    .progressbar {
+      .progessbar-wrapper {
+        .progressbar-container {
+          .progressbar-container-circle {
+            .progressbar-container-circle-line {
+              width: 21.8rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1390px) {
+  .main {
+    .progressbar {
+      .progessbar-wrapper {
+        .progressbar-container {
+          .progressbar-container-circle {
+            .progressbar-container-circle-line {
+              width: 25rem;
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -20,7 +20,7 @@ header {
 
 nav {
   margin-left: -5%;
-  margin-right: -5%;
+  margin-right: -6%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -150,7 +150,60 @@ nav a {
 
 .main {
   width: 100%;
-  height: 30vh;
+  height: 100%;
+}
+
+.main .progressbar {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 3em;
+  margin-bottom: 4em;
+  overflow: hidden;
+}
+
+.main .progressbar .progessbar-wrapper {
+  width: 100%;
+  margin-left: 14%;
+  margin-right: 14%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.main .progressbar .progessbar-wrapper .progressbar-container {
+  margin: 2rem;
+}
+
+.main .progressbar .progessbar-wrapper .progressbar-container .progressbar-container-text {
+  text-align: center;
+  height: 10%;
+}
+
+.main .progressbar .progessbar-wrapper .progressbar-container .progressbar-container-circle {
+  margin-top: 1.5rem;
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #343434;
+}
+
+.main .progressbar .progessbar-wrapper .progressbar-container .progressbar-container-circle span {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  display: block;
+  width: 25rem;
+  border: 2px solid #343434;
+  background-color: #343434;
 }
 
 .main .covid-banner {
@@ -217,7 +270,55 @@ nav a {
   margin-left: 1em;
 }
 
+.main .wrapper {
+  margin-top: 5em;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (18rem)[auto-fit];
+      grid-template-columns: repeat(auto-fit, 18rem);
+  grid-gap: 3%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.main .wrapper .wrapper-container {
+  overflow: hidden;
+  -webkit-box-shadow: 0px 2px 8px 0px #b0bec5;
+          box-shadow: 0px 2px 8px 0px #b0bec5;
+  text-align: center;
+  border-radius: 5px;
+  position: relative;
+  margin: 0.5rem;
+}
+
+.main .wrapper .wrapper-container .wrapper-container-icon {
+  margin-top: 3rem;
+}
+
+.main .wrapper .wrapper-container .wrapper-container-content {
+  margin: 3.8rem 0rem 2rem 0rem;
+}
+
+.main .wrapper .wrapper-container .wrapper-container-content p {
+  margin: 1.3rem 2.5rem;
+  font-size: 15px;
+}
+
+.main .wrapper .wrapper-container .wrapper-container-content button {
+  margin-top: 3rem;
+  width: 45%;
+  border: none;
+  font-size: 16px;
+  color: white;
+  padding: 0.5rem;
+  background-color: #343434;
+  border-radius: 10px;
+  outline: none;
+}
+
 .footer-content {
+  margin-top: 10%;
   width: 100%;
   padding: 16px;
   display: -webkit-box;
@@ -260,5 +361,95 @@ nav a {
 
 .footer-content .footer-content-right * {
   padding-bottom: 6px;
+}
+
+@media screen and (max-width: 919px) {
+  .wrapper-container:last-child {
+    left: 50%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .wrapper-container:last-child {
+    left: 0%;
+  }
+}
+
+@media screen and (max-width: 762px) {
+  .wrapper {
+    grid-gap: 0% !important;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .footer-content {
+    font-size: 15px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .footer-content .footer-content-left {
+    margin-left: 0%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .footer-content .footer-content-right {
+    margin-right: 0%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .progressbar-container-text {
+    margin-bottom: 3em;
+  }
+}
+
+@media screen and (min-width: 300px) {
+  .main .progressbar .progessbar-wrapper .progressbar-container .progressbar-container-circle .progressbar-container-circle-line {
+    width: 11rem;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .main .progressbar .progessbar-wrapper .progressbar-container .progressbar-container-circle .progressbar-container-circle-line {
+    width: 14rem;
+  }
+}
+
+@media screen and (max-width: 610px) {
+  .main .progressbar .progessbar-wrapper {
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 11px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .main .progressbar .progessbar-wrapper .progressbar-container .progressbar-container-circle .progressbar-container-circle-line {
+    width: 16rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .main .progressbar .progessbar-wrapper .progressbar-container .progressbar-container-circle .progressbar-container-circle-line {
+    width: 19rem;
+  }
+}
+
+@media screen and (min-width: 1185px) {
+  .main .progressbar .progessbar-wrapper .progressbar-container .progressbar-container-circle .progressbar-container-circle-line {
+    width: 21.8rem;
+  }
+}
+
+@media screen and (min-width: 1390px) {
+  .main .progressbar .progessbar-wrapper .progressbar-container .progressbar-container-circle .progressbar-container-circle-line {
+    width: 25rem;
+  }
 }
 /*# sourceMappingURL=style.css.map */
