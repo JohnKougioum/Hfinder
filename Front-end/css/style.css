@@ -247,10 +247,11 @@ nav a {
 .main .covid-banner .covid-banner-content-wrapper .covid-banner-content-wrapper-logo {
   width: 64px;
   height: 64px;
+  margin-right: 10px;
 }
 
 .main .covid-banner .covid-banner-content-wrapper .covid-banner-content-wrapper-details {
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
 .main .covid-banner .covid-banner-content-wrapper .covid-banner-content-wrapper-details p {
