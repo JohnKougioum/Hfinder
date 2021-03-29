@@ -1,5 +1,5 @@
 <h1 align="center">Session 3</h13>
-<h6 align="center">Wednesday 17/03/2021</h6>
+<h6 align="center">Friday 26/03/2021</h6>
 
 #### Συμμετέχοντες
 
