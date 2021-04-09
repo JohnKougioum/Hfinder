@@ -1,38 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <div class="logo">
-          <h4>Hfinder</h4>
-        </div>
-        <ul class="nav-links">
-          <li>
-            <a href="#">Νέα Αγγελία</a>
-          </li>
-          <li>
-            <a href="#">Αγορά</a>
-          </li>
-          <li>
-            <a href="#">Ενοικίαση</a>
-          </li>
-          <li>
-            <a class="login_btn" href="#">Σύνδεση</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-
+<template>
+  <div>
     <section class="hero">
       <div class="hero-section">
-        <img src="images/homebg-1.jpg" alt="" />
+        <img src="../assets/images/homebg-1.jpg" alt="" />
 
         <div class="hero-section_area">
           <div class="hero-section_area-title">
@@ -110,7 +80,7 @@
       <div class="wrapper">
         <div class="wrapper-container">
           <div class="wrapper-container-icon">
-            <img src="images/Home-Sale 1.svg" alt="Sale House" />
+            <img src="../assets/images/Home-Sale.svg" alt="Sale House" />
           </div>
 
           <div class="wrapper-container-content">
@@ -124,7 +94,7 @@
         </div>
         <div class="wrapper-container">
           <div class="wrapper-container-icon">
-            <img src="images/buy 1.svg" alt="Buy House" />
+            <img src="../assets/images/buy.svg" alt="Buy House" />
           </div>
 
           <div class="wrapper-container-content">
@@ -139,7 +109,7 @@
 
         <div class="wrapper-container">
           <div class="wrapper-container-icon">
-            <img src="images/Home-Rent 1.svg" alt="House Rent" />
+            <img src="../assets/images/Home-Rent.svg" alt="House Rent" />
           </div>
 
           <div class="wrapper-container-content">
@@ -153,25 +123,15 @@
         </div>
       </div>
     </section>
+  </div>
+</template>
 
-    <footer>
-      <div class="footer-content">
-        <div class="footer-content-left">
-          <h2>Χρήσιμοι σύνδεσμοι</h2>
-          <ul>
-            <li><a href="#">Καταχώρηση ιδιοκτησίας</a></li>
-            <li><a href="#">Ιδιοκτησίες προς πώληση</a></li>
-            <li><a href="#">Ιδιοκτησίες προς ενοικίαση</a></li>
-          </ul>
-        </div>
-        <div class="footer-content-right">
-          <h2>Hfinder</h2>
-          <ul>
-            <li><a href="#">Σχετικά με εμάς</a></li>
-            <li><a href="#">Επικοινωνία</a></li>
-          </ul>
-        </div>
-      </div>
-    </footer>
-  </body>
-</html>
+<script>
+export default {
+  name: "Home",
+};
+</script>
+
+<style scoped>
+@import "../assets/css//home/home.css";
+</style>
