@@ -16,10 +16,10 @@
           <a href="#">Ενοικίαση</a>
         </li>
         <li>
-          <router-link to="/" class="login-btn">Σύνδεση</router-link>
+          <router-link to="/Login" class="login-btn">Σύνδεση</router-link>
         </li>
         <li>
-          <router-link to="/" class="register-btn">Εγγραφή</router-link>
+          <router-link to="/Register" class="register-btn">Εγγραφή</router-link>
         </li>
       </ul>
     </nav>
