@@ -7,7 +7,7 @@
     <div class="left-register">
         <div class="circle">
             <div class="person-vector">
-                <img src="Images/Group.svg" alt="">
+        <img src="../assets/images/Group.svg" alt="" />
             </div>
         </div>
         <div class="already-acc">
@@ -65,32 +65,31 @@ body{
 
 
 .register-container{
-    margin-top: 12vh;
-    width: 100%;
-    display: flex;
-    padding: 2rem;}
+ width: 100%;
+   display: flex;
+   padding: 2rem;}
      .left-register{
-       margin-top: 45px;
-       flex: 30%;
-       border-right:1px solid black ;}
-       .circle{ 
-          margin-left: 35px;;
-          height: 200px;
-          border: 4px solid #D6D6D6;
-          border-radius: 50% ;
-          object-fit: cover;
-          width: 200px;}
-          .person-vector{
-             width: 50%;
-             transform:translate(-50%,-50%) ;
-             position: relative;
-             top: 50%;
-             left: 50%;}
-             img{
-                width: 100px;
-             }
-          
-        
+     margin-left:10px;
+      margin-top: 125px;
+      flex: 30%;
+      border-right:1px solid black ;}
+      .circle{ 
+         margin-top: 20px;
+         margin-left: 50px;
+         height: 200px;
+         border: 4px solid #D6D6D6;
+         border-radius: 50% ;
+         object-fit: cover;
+         width: 200px;}
+         .person-vector{
+            width: 50%;
+            transform:translate(-50%,-50%) ;
+            position: relative;
+            top: 50%;
+            left: 50%;}
+            img{
+               width: 100px;
+            }       
         .already-acc{
             font-weight: lighter;
             margin-top: 5em;
@@ -105,17 +104,15 @@ body{
     
 
     .right-register{
-        flex: 70%;
-        margin-left: 2rem;
-        padding-left: 2em;}
-            h1{
-                margin-left: 15px;
+      flex: 70%;
+      margin-left: 5rem;
+      padding-left: 2em;}
+            h1{   margin-top: 90px;
                 font-size: 30px;
                 font-weight: 600;
                 letter-spacing: 0.5px;            
         }
         #register-button{
-         margin-top: -8px;
         height: 50px;
          background: #0080FF;
          border-radius: 5px;
@@ -125,22 +122,24 @@ body{
          letter-spacing: 1px;
          line-height: 43px;
          color: #FFFBFB;    
+         width: 90%;
          }
 
  form{
+     margin-top: 64px;
      font-style: normal;
-     width: 70%;
-    padding: 40px 25px 0 20px;
-    margin: 10px 0 25px;
+     width: 90%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 30px;
+    grid-gap: 19.4px;
     box-sizing: border-box;
     font-size: 23px;
     font-weight: 400;}
     input[type=text], select {
+    margin-top: 1px;
     border: 1.5px solid #000000;
     box-sizing: border-box;
-    width: 100%;
-    height: 40px;      }
+    width: 91.2%;
+        height: 50px;
+  }
 </style>

@@ -46,8 +46,8 @@
                 </div>
                 <input id="grey-button" type="submit" value="Εισαγωγή φωτογραφιών">
             </div>
+            <input id="blue-button" type="submit" value="Καταχώρηση αγγελίας">
 
-                <input id="blue-button" type="submit" value="Καταχώρηση αγγελίας">
 
         </div>
     </div>
@@ -69,6 +69,7 @@ body{
     box-sizing: border-box;
  }
  h1{
+     margin-top: 60px;
     font-size: 30px;
     font-weight: 600;
     letter-spacing: 0.5px;            
@@ -79,14 +80,15 @@ body{
  .left-new-listing{
     width: 50%;
     padding: 2rem;
-    margin-top: 25px;
+    margin-top: 20px;
     margin-left: 35px;
  }
  .sell-rent{
-    margin-top: 70px;
+    margin-top: 55px;
  }
  #sell,#rent{
-     margin-left: 18px;
+     margin-left: 19px;
+     margin-right: 5px;
  }
  
  .same-row{
@@ -96,12 +98,12 @@ body{
  }
  form{
     font-style: normal;
-    width: 80%;
+    width: 94%;
    padding: 20px 15px 0px 0px;
    margin: 10px 0 25px;
    display: grid;
    grid-template-columns: 1fr ;
-   grid-gap: 30px;
+   grid-gap: 22px;
    box-sizing: border-box;
    font-size: 23px;
    font-weight: 400;}
@@ -109,14 +111,14 @@ body{
    border: 1.5px solid #000000;
    box-sizing: border-box;
    width: 100%;
-   height: 40px;      }
+   height: 50px;      }
    #big-textbox{
        height: 100px;
    }
 
    .photo-gallery{
        margin-left: 30px;
-       margin-top: 150px;
+       margin-top: 180px;
        background-color: #C4C4C4;
        width: 400px;
        height: 200px;
@@ -128,18 +130,17 @@ body{
    }
    #grey-button{
        background-color: #DDDDDD;
-       margin-left: 30px;
+       margin-left: 155px;
        width: 274px;
        height: 45px;
-       margin-top: 35px;
+       margin-top: 25px;
        font-size: 16px;
        font-weight: 500;
        letter-spacing: 0.5px; 
    }
 
    #blue-button{
-       
-        margin-top: 220px;
+       margin-top: 215px;
         float: right;
         width: 290px;
         height: 50px;
@@ -153,7 +154,8 @@ body{
          color: #FFFBFB;    
          
    }
+
    .right-new-listing{
-       margin-left: 50px;
+       margin-left: 190px;
    }
 </style>

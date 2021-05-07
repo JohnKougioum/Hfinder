@@ -3,7 +3,7 @@
     <div class="left-login">
         <div class="circle">
             <div class="person-vector">
-                <img src="Images/Group.svg" alt="">
+        <img src="../assets/images/Group.svg" alt="" />
             </div>
  
         </div>
@@ -12,11 +12,9 @@
         <div class="right-login">
             <h1 id="login-subhead">Σύνδεση</h1>
             <div class="login-form">
-                <form class="username" action="">
+                <form class="login" action="">
                     <label id="login-form-labels" for="name">Όνομα χρήστη</label><br>
-                    <input type="text"><br>
-                </form>
-                <form class="password" action="">
+                    <input type="text"><br>                
                     <label id="login-form-labels" for="name">Κωδικός πρόσβασης</label><br>
                     <input type="text">              <br> 
                 </form>
@@ -39,9 +37,10 @@ export default {
 </script>
 
 <style scoped>
-
+h1{
+   margin-top: 90px;
+}
 body{
-   margin: 0;
    font-family: "Lato",sans-serif;
    background: white;
    box-sizing: border-box;
@@ -51,11 +50,13 @@ body{
    display: flex;
    padding: 2rem;}
    .left-login {
-      margin-top: 45px;
+      margin-left:10px;
+      margin-top: 125px;
       flex: 30%;
       border-right:1px solid black ;}
       .circle{ 
-         margin-left: 35px;;
+         margin-top: 20px;
+         margin-left: 50px;
          height: 200px;
          border: 4px solid #D6D6D6;
          border-radius: 50% ;
@@ -72,7 +73,7 @@ body{
             }
          .right-login{
       flex: 70%;
-      margin-left: 2rem;
+      margin-left: 5rem;
       padding-left: 2em;}
       #login-subhead{
          font-size: 30px;
@@ -81,12 +82,14 @@ body{
       }
 
        .login-form{        
+          margin-bottom: 1px;
          margin-top: 4rem;
          font-style: normal;}
          input[type=text], select {
-            width: 25%;
+            height: 50px;
+            width: 40%;
             padding: 15px 25px;
-            margin: 25px 0 25px;
+            margin: 20px 0px 50px;
             display: inline-block;
             border: 1.5px solid black;
             border-radius: 2px;
@@ -100,7 +103,6 @@ body{
 
       .store-password{
          margin-left: 7px;
-         margin-top: 10px;
          font-size: 21px;
          font-weight:lighter;
          font-style: normal;
@@ -124,6 +126,7 @@ body{
    color: #FFFBFB;    
    }
    #no-acc{
+      margin-top: 19px;
       font-weight: lighter;
       font-size: 18px;
    }
@@ -136,22 +139,24 @@ body{
    
    
    #register-button{
-      width: 25%;
+     width: 50%;
    
-   background: #0080FF;
-   border-radius: 5px;
-   font-style: normal;
-   font-size: 30px;
-   font-weight: 500;
-   letter-spacing: 1px;
-   line-height: 43px;
-   margin-top: 30px;
+        height: 50px;
+         background: #0080FF;
+         border-radius: 5px;
+         font-style: normal;
+         font-size: 24px;
+         font-weight: 500;
+         letter-spacing: 1px;
+         line-height: 43px;
+         color: #FFFBFB;   
+   margin-top: 35px;
    margin-bottom: 10px;;
    color: #FFFBFB;    
    }
    #already-acc{
       margin-left: 40px;
-      margin-top: 5em;
+      margin-top: 6em;
       font-weight: lighter;
       font-size: 18px;}
 
