@@ -13,6 +13,7 @@ namespace hfind.Controllers
 [Route("Houses")]
 public class HousesController : ControllerBase 
 {
+  //28:56
     private readonly HHousesRepository repository;
     public HousesController(HHousesRepository repository)
     {
@@ -20,13 +21,13 @@ public class HousesController : ControllerBase
     }
 
   [HttpGet]
-   public async Task<IEnumerable<HouseDto>> GetHousesAsync()
+   public async Task<IEnumerable<HouseDto>> GetHousesAsync(int page)
    {
-     var houses = (await repository.GetHouseAsync())
+     var houses = (await repository.GetHouseAsync(page))
                  .Select(House => House.AsDto());
      return houses;
    }
-   [HttpGet("{id}")]
+   [HttpGet("id/{id}")]
    public async Task<ActionResult<HouseDto>> GetHouseAsync(Guid id)
     {
       var House = await repository.GetHouseAsync(id);
@@ -36,13 +37,21 @@ public class HousesController : ControllerBase
       }
       return House.AsDto();
     }
+     [HttpGet("{Location}")]
+   public async Task<IEnumerable<HouseDto>> GetHouseLocAsync(String Location)
+    {
+        var houses = (await repository.GetHouseLocAsync(Location))
+                 .Select(House => House.AsDto());
+
+      return houses;
+    }
     [HttpPost]
     public async Task<ActionResult<HouseDto>> CreateHouseAsync(CreateHouseDto HouseDto){
         House House = new(){
           Id = Guid.NewGuid(),
           Price = HouseDto.Price,
           SellRent = HouseDto.SellRent,
-          Region = HouseDto.Region,
+          Location = HouseDto.Location,
           CreatedDate = DateTimeOffset.UtcNow
         };
         await repository.CreateHouseAsync(House);
@@ -59,7 +68,7 @@ public class HousesController : ControllerBase
       House updatedHouse = existingHouse with{
         Price = HouseDto.Price,
         SellRent = HouseDto.SellRent,
-        Region = HouseDto.Region
+        Location = HouseDto.Location
       };
       await repository.UpdateHouseAsync(updatedHouse);
       return NoContent();
@@ -77,15 +86,6 @@ public class HousesController : ControllerBase
 
     }
    
-  // //  public async Task<ActionResult<HouseDto>> GetSellRentAsync(int SellRent)
-  //   // {
-  //     var House = await repository.GetSellRentAsync(SellRent);
-  //     if(House is null)
-  //     {
-  //       return NotFound();
-  //     }
-  //   }
-  
     [HttpGet("/SellRent/{SellRent}")]
   
    public async Task<IEnumerable<HouseDto>> GetSellRentAsync(int SellRent)
@@ -95,5 +95,6 @@ public class HousesController : ControllerBase
      return houses;
    }
   }
+
 }
 

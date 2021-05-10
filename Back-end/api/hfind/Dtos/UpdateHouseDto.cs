@@ -9,6 +9,6 @@ namespace hfind.Dtos
     [Required]
     public decimal Price { get; init;}
  [Required]
-    public string Region { get; init;}
+    public string Location { get; init;}
     }
 }

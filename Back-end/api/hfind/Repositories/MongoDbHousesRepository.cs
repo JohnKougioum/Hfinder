@@ -37,11 +37,9 @@ namespace hfind.Repositories
             return await HousesCollection.Find(filter).SingleOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<House>> GetHouseAsync()
+        public async Task<IEnumerable<House>> GetHouseAsync(int page )
         {
-
-            
-            return await HousesCollection.Find(new BsonDocument()).Limit(4).ToListAsync();
+            return await HousesCollection.Find(new BsonDocument()).Limit(page).ToListAsync();
         }
 
         public async Task UpdateHouseAsync(House House)
@@ -54,29 +52,13 @@ namespace hfind.Repositories
              var filter = filterBuilder.Eq(House => House.SellRent, SellRent);
             return await HousesCollection.Find(filter).ToListAsync();
         }
+     public async Task<IEnumerable<House>> GetHouseLocAsync(String Location)
+        {
+            var filter = filterBuilder.Eq(House => House.Location, Location);
+           return await HousesCollection.Find(filter).ToListAsync();
+            //return await HousesCollection.Find(new BsonDocument(),filer).ToListAsync();
+        }
 
-      //      public async Task<House> GetRentAsync(int SellRent)
-      //   {
-         //    var filter = filterBuilder.Eq(House => House.SellRent, SellRent);
-        //     return await HousesCollection.Find(filter).SingleOrDefaultAsync();
-      //   }
+    
     }
 }
-// [HttpGet("{SellRent}")]
-   //    public async Task<ActionResult<HouseDto>> GetRentRentAsync()
- //    {
- //       var rent = (await repository.GetRentAsync())
-  //                .Select(House => House.SellRent);
-      
-  //     if(rent is null)
-  //     {
-  //       return NotFound();
- //      }
-// 
-   //    return House.AsDto();
-  //   }
-   //   public async Task<House> GetSellRentAsync()
-    //      {
-    //         var filter = filterBuilder.Eq("SellRent", 0) ;
-    //          return await HousesCollection.Find(filter).SingleOrDefaultAsync();
-    //    }

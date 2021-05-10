@@ -7,7 +7,7 @@ namespace hfind.Dtos
     public Guid Id { get; init; }
     public int SellRent { get; init; }
     public decimal Price { get; init; }
-    public String Region { get; init; }
+    public String Location { get; init; }
     public  DateTimeOffset CreatedDate { get; init; }
     
  }
