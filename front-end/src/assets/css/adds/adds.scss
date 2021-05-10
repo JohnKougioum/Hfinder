@@ -124,6 +124,45 @@ $main-dark: #343434;
             }
           }
         }
+
+        .acontainer-adds-results-card-controls {
+          border-top: 1px solid rgba(0, 0, 0, 0.2);
+          display: flex;
+          justify-content: space-around;
+          padding: 12px;
+          -webkit-box-shadow: inset 0px 2px 3px rgba(50, 50, 50, 0.3);
+          -moz-box-shadow: inset 0px 2px 3px rgba(50, 50, 50, 0.3);
+          box-shadow: inset 0px 2px 3px rgba(50, 50, 50, 0.3);
+
+          button {
+            outline: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+          }
+
+          .acontainer-adds-results-card-controls-delete {
+            background-color: #d93c23;
+            color: white;
+            border-radius: 3px;
+            transition: 0.1s ease-in-out;
+          }
+
+          .acontainer-adds-results-card-controls-delete:hover {
+            background-color: #c9240b;
+          }
+
+          .acontainer-adds-results-card-controls-edit {
+            // background-color: #0080ff;
+            // color: white;
+            background-color: #d6d6d6;
+            border-radius: 3px;
+            transition: 0.1s ease-in-out;
+          }
+          .acontainer-adds-results-card-controls-edit:hover {
+            background-color: #c2c1c1;
+          }
+        }
       }
     }
   }
