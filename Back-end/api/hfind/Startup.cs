@@ -43,6 +43,12 @@ namespace hfind
                 return new MongoClient(settings.ConnectionString);
 
            });
+           services.AddCors(o => o.AddPolicy("MyPolicy", builder =>{
+                builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            }));
+
             services.AddSingleton<HHousesRepository, MongoDbHousesRepository>();
             services.AddControllers(options =>{
                 options.SuppressAsyncSuffixInActionNames = false;
@@ -68,6 +74,8 @@ namespace hfind
             app.UseHttpsRedirection();
                 }
             app.UseRouting();
+
+            app.UseCors("MyPolicy");
 
             app.UseAuthorization();
 

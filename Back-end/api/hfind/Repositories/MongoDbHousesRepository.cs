@@ -39,7 +39,9 @@ namespace hfind.Repositories
 
         public async Task<IEnumerable<House>> GetHouseAsync()
         {
-            return await HousesCollection.Find(new BsonDocument()).ToListAsync();
+
+            
+            return await HousesCollection.Find(new BsonDocument()).Limit(4).ToListAsync();
         }
 
         public async Task UpdateHouseAsync(House House)
