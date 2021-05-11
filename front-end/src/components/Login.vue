@@ -12,17 +12,19 @@
         <div class="right-login">
             <h1 id="login-subhead">Σύνδεση</h1>
             <div class="login-form">
-                <form class="login" action="">
-                    <label id="login-form-labels" for="name">Όνομα χρήστη</label><br>
-                    <input type="text"><br>                
-                    <label id="login-form-labels" for="name">Κωδικός πρόσβασης</label><br>
-                    <input type="text">              <br> 
+                <form @submit.prevent="handleSubmit" class="login">
+                    <label id="login-form-labels" for="username">Όνομα χρήστη</label><br>
+                    <input v-model="username" type="text" name="username"><br>                
+                    <label id="login-form-labels" for="passwd">Κωδικός πρόσβασης</label><br>
+                    <input v-model="passwd" type="text" name="passwd">              <br>
+                    <input type="checkbox" name="pass" id="store-pass" >
+                    <label class="store-password" for="store-pass">Αποθήκευση κωδικού πρόσβασης</label><br>
+                    <input id="login-button" type="submit" value="Σύνδεση"> 
                 </form>
-                <input type="checkbox" name="pass" id="store-pass" >
-                <label class="store-password" for="store-pass">Αποθήκευση κωδικού πρόσβασης</label>
+                
             </div>
 
-                <input id="login-button" type="submit" value="Σύνδεση">
+                
         <p id="no-acc"> Δεν έχεις λογαριασμο; <span><a id="new-acc" href="#">Δημιουργία εδώ</a></span></p>
         </div>
     </div>
@@ -30,9 +32,30 @@
 </template>
 
 <script>
+import axios from 'axios'
 
 export default {
-
+   name: "Login",
+   data() {
+      return {
+         username: "",
+         passwd: "",
+      };
+   },
+   methods: {
+      async handleSubmit(){
+         try {
+            await axios.post('LINK_HERE', {
+               username: this.username,
+               passwd: this.passwd
+            });
+            
+            this.$router.push('/');
+         } catch (err) {
+            console.log(err);
+         }
+      }
+   }
 }
 </script>
 

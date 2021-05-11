@@ -18,22 +18,22 @@
     <div class="right-register">  
          <h1 id="create-account"> Δημιουργία λογαριασμού</h1>      
          <div class="wrapper">
-         <form id="register-form-id" action="#"> 
+         <form id="register-form-id" @submit.prevent="handleSubmit"> 
                     <label for="fname">Όνομα</label> 
                     <label  for="lname">Επώνυμο</label>
-                    <input  type="text" >
-                    <input  type="text"  >                       
+                    <input v-model="firstname"  type="text" >
+                    <input v-model="lastname" type="text"  >                       
                     <label   for="fname">Όνομα χρήστη</label>
                     <label  for="fname">Email</label>
-                    <input  type="text" >
-                    <input  type="text" >           
+                    <input v-model="username" type="text" >
+                    <input v-model="email" type="text" >           
                     <label  for="fname">Κωδικός πρόσβασης</label>
                     <label  for="fname">Επαλήθευση κωδικού</label>
-                    <input type="text"  > 
+                    <input v-model="passwd" type="text"  > 
                     <input type="text"  > 
                     <label   for="fname">Τηλέφωνο επικοινωνίας</label>
                     <label   for="fname"></label>
-                    <input   type="text"  >     
+                    <input v-model="phone_num"  type="text"  >     
                     <input id="register-button" type="submit" value="Εγγραφή">                                                                                          
                                     
             </form>
@@ -44,9 +44,38 @@
 </template>
 
 <script>
+import axios from 'axios'
 
 export default {
-
+   name: "Register",
+   data() {
+      return {
+        firstname: "",
+        lastname: "",
+        username: "",
+        email: "",
+        passwd: "",
+        phone_num: ""
+      };
+   },
+   methods: {
+      async handleSubmit(){
+         try {
+            await axios.post('LINK_HERE', {
+                firstname: this.firstname,
+                lastname: this.lastname,
+                username: this.username,
+                email: this.email,
+                passwd: this.passwd,
+                phone_num: this.phone_num
+            });
+            
+            this.$router.push('/Login');
+         } catch (err) {
+            console.log(err);
+         }
+      }
+   }
 }
 </script>
 
