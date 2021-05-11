@@ -1,10 +1,22 @@
 
-
 <template>
   <body>
-    <div class="new-listing-container">
-        <div class="left-new-listing">
-            <h1>Συμπληρώστε τα στοιχεία</h1>
+    <div class="edit-listing-container">
+
+
+        <div class="left-edit-listing">
+            <div class="photo-div">
+                <div class="photo-gallery">
+                    <p>PHOTO GALLERY</p> 
+                </div>
+                <input id="grey-button" type="submit" value="Εισαγωγή φωτογραφιών">
+            </div>
+            <input id="blue-button" type="submit" value="Aποθήκευση">
+
+
+        </div>
+                <div class="right-edit-listing">
+            <h1>Eπεξεργασία αγγελίας</h1>
             <div class="sell-rent">
                 <p>Διάθεση προς:
                 <input type="radio" id="sell" name="sell-rent" value="sell">
@@ -38,18 +50,6 @@
             </div>
 
         </div>
-
-        <div class="right-new-listing">
-            <div class="photo-div">
-                <div class="photo-gallery">
-                    <p>PHOTO GALLERY</p> 
-                </div>
-                <input id="grey-button" type="submit" value="Εισαγωγή φωτογραφιών">
-            </div>
-            <input id="blue-button" type="submit" value="Καταχώρηση αγγελίας">
-
-
-        </div>
     </div>
 </body>
 </template>
@@ -74,14 +74,14 @@ body{
     font-weight: 600;
     letter-spacing: 0.5px;            
 }
- .new-listing-container{
+ .edit-listing-container{
      display: flex;
  }
- .left-new-listing{
+ .right-edit-listing{
     width: 50%;
     padding: 2rem;
     margin-top: 20px;
-    margin-left: 35px;
+    margin-left: 280px;
  }
  .sell-rent{
     margin-top: 55px;
@@ -118,7 +118,7 @@ body{
    }
 
    .photo-gallery{
-       margin-left: 30px;
+       margin-left: -170px;
        margin-top: 180px;
        background-color: #C4C4C4;
        width: 400px;
@@ -131,7 +131,7 @@ body{
    }
    #grey-button{
        background-color: #DDDDDD;
-       margin-left: 155px;
+       margin-left: -170px;
        width: 274px;
        height: 45px;
        margin-top: 25px;
@@ -141,8 +141,8 @@ body{
    }
 
    #blue-button{
+       margin-left: -170px;
        margin-top: 215px;
-        float: right;
         width: 290px;
         height: 50px;
          background: #0080FF;
@@ -156,7 +156,7 @@ body{
          
    }
 
-   .right-new-listing{
-       margin-left: 190px;
+   .left-edit-listing{
+       margin-left: 230px;
    }
 </style>

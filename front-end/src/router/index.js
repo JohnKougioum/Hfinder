@@ -6,6 +6,7 @@ import Register from "../components/Register";
 import Newlisting from "../components/Newlisting";
 import Editprofile from "../components/Editprofile";
 import Dashboard from "../views/Dashboard";
+import Editlisting from "../components/Editlisting"
 
 const routes = [
   {
@@ -43,6 +44,11 @@ const routes = [
     name: "Dashboard",
     component: Dashboard,
   },
+  {
+    path:"/Editlisting",
+    name:"Editlisting",
+    component:Editlisting
+  }
 ];
 
 const router = createRouter({

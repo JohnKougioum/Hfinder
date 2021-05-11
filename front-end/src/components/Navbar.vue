@@ -7,7 +7,7 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="#">Νέα Αγγελία</a>
+          <router-link to="/newlisting">Νέα αγγελία</router-link>
         </li>
         <li>
           <router-link to="/buy">Αγορά</router-link>
