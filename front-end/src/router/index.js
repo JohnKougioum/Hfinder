@@ -7,6 +7,9 @@ import Newlisting from "../components/Newlisting";
 import Editprofile from "../components/Editprofile";
 import Dashboard from "../views/Dashboard";
 import Editlisting from "../components/Editlisting"
+import About_us from '../views/About_us';
+import Covid19 from '../views/Covid19';
+import Favourites from '../views/Favourites';
 
 const routes = [
   {
@@ -48,6 +51,21 @@ const routes = [
     path:"/Editlisting",
     name:"Editlisting",
     component:Editlisting
+  },
+  {
+    path: "/about_us",
+    name: "About_us",
+    component: About_us,
+  },
+  {
+    path: "/covid19",
+    name: "Covid19",
+    component: Covid19
+  },
+  {
+    path: "/favourites",
+    name: "Favourites",
+    component: Favourites
   }
 ];
 

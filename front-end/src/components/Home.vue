@@ -70,7 +70,7 @@
             <div class="covid-banner-content-wrapper-details">
               <p>
                 Πώς ανταποκρίνεται το Hfinder στον COVID-19
-                <a href="#">Λεπτομέρειες</a>
+                 <router-link to="/Covid19">Λεπτομέρειες</router-link>
               </p>
             </div>
           </div>

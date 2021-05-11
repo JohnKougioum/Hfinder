@@ -12,7 +12,7 @@
       <div class="footer-content-right">
         <h2>Hfinder</h2>
         <ul>
-          <li><a href="#">Σχετικά με εμάς</a></li>
+          <li><router-link to="/About_us">Σχετικά με εμάς</router-link></li>
           <li><a href="#">Επικοινωνία</a></li>
         </ul>
       </div>
