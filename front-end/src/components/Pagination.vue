@@ -17,17 +17,6 @@
       >
         &lt;
       </button>
-      <!-- <span v-for="(item, index) in new Array(numberPages)" :key="index">
-        <button
-          :class="[
-            'pagination-button',
-            pageNumber == index + 1 ? 'active' : '',
-          ]"
-          @click="$store.commit('clickPage', index)"
-        >
-          {{ index + 1 }}
-        </button>
-      </span> -->
       <li class="pagination-btn">
         <span>{{ pageNumber }}</span>
       </li>

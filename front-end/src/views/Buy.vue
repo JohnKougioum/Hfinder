@@ -5,7 +5,7 @@
       <div class="pagination">
         <Adds :adds="getAdds" />
 
-        <Pagination :totalItems="5" />
+        <Pagination :totalItems="10" />
       </div>
     </div>
   </div>
@@ -28,10 +28,7 @@ export default {
       adds: [],
     };
   },
-  mounted() {
-    if (this.$store.getters.getPageNumber != this.$route.query.page)
-      this.$store.commit("enterPageNumber", this.$route.query.page || 1);
-  },
+  mounted() {},
   computed: {
     PageNumber() {
       return this.$store.getters.getPageNumber;
@@ -39,13 +36,15 @@ export default {
     ...mapGetters(["getAdds"]),
   },
   created() {
-    this.fetchAdds();
+    this.fetchAdds(this.PageNumber);
   },
   methods: {
     ...mapActions(["fetchAdds"]),
   },
   watch: {
     PageNumber(newValue, oldValue) {
+      this.$store.dispatch("fetchAdds", newValue);
+
       if (newValue == 1) {
         this.$router.push({ name: "Buy" });
         return;
@@ -54,6 +53,14 @@ export default {
         name: "Buy",
         query: { page: newValue },
       });
+    },
+    "$route.query.page": {
+      immediate: true,
+      handler(newVal) {
+        if (this.$route.name != "Buy") return;
+        if (newVal == null) newVal = 1;
+        this.$store.commit("enterPageNumber", newVal);
+      },
     },
   },
 };

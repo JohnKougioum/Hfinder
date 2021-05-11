@@ -27,13 +27,21 @@ export const store = createStore({
       (state.adds = state.adds.filter((add) => add.id !== id)),
   },
   actions: {
-    async fetchOwnAdds({ commit }) {
-      const response = await axios.get("https://localhost:5001/Houses/");
+    async fetchOwnAdds({ commit }, pageNumber) {
+      const response = await axios.get("https://localhost:5001/Houses/", {
+        params: {
+          page: pageNumber,
+        },
+      });
 
       commit("setAdds", response.data);
     },
-    async fetchAdds({ commit }) {
-      const response = await axios.get("https://localhost:5001/Houses/");
+    async fetchAdds({ commit }, pageNumber) {
+      const response = await axios.get("https://localhost:5001/Houses", {
+        params: {
+          page: pageNumber,
+        },
+      });
 
       commit("setAdds", response.data);
     },

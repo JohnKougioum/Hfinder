@@ -31,9 +31,6 @@ export default {
     Add,
   },
   methods: {
-    // deleteAdd(id) {
-    //   console.log(id);
-    // },
     ...mapActions(["deleteAdd"]),
   },
 };
