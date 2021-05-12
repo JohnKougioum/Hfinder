@@ -10,7 +10,7 @@
           <router-link to="/newlisting">Νέα αγγελία</router-link>
         </li>
         <li>
-          <router-link to="/buy">Αγορά</router-link>
+          <router-link to="/buy/:id">Αγορά</router-link>
         </li>
         <li>
           <a href="#">Ενοικίαση</a>

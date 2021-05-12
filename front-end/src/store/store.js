@@ -5,6 +5,7 @@ export const store = createStore({
   state: {
     pageNumber: 1,
     adds: [],
+    editAdd: [],
   },
   mutations: {
     prevPage(state) {
@@ -25,6 +26,7 @@ export const store = createStore({
     setAdds: (state, adds) => (state.adds = adds),
     removeAdd: (state, id) =>
       (state.adds = state.adds.filter((add) => add.id !== id)),
+    setEditAdd: (state, editAdd) => (state.editAdd = editAdd),
   },
   actions: {
     async fetchOwnAdds({ commit }, pageNumber) {
@@ -36,13 +38,24 @@ export const store = createStore({
 
       commit("setAdds", response.data);
     },
-    async fetchAdds({ commit }, pageNumber) {
-      const response = await axios.get("https://localhost:5001/Houses", {
-        params: {
-          page: pageNumber,
-        },
-      });
+    // async fetchAdds({ commit }, pageNumber) {
+    //   const response = await axios.get("https://localhost:5001/Houses", {
+    //     params: {
+    //       page: pageNumber,
+    //     },
+    //   });
 
+    //   commit("setAdds", response.data);
+    // },
+    async fetchAdds({ commit }, { newValue, addLocation }) {
+      const response = await axios.get(
+        `https://localhost:5001/Houses/${addLocation}`,
+        {
+          params: {
+            page: newValue,
+          },
+        }
+      );
       commit("setAdds", response.data);
     },
     async deleteAdd({ commit }, id) {
@@ -55,10 +68,26 @@ export const store = createStore({
 
       commit("removeAdd", id);
     },
+    async fetchEditAdd({ commit }, id) {
+      const response = await axios.get(
+        `https://localhost:5001/Houses/id/${id}`
+      );
+
+      commit("setEditAdd", response.data);
+    },
+    async pushEditAdd({ commit }, { changes, eid }) {
+      const response = await axios.put(`https://localhost:5001/Houses/${eid}`, {
+        sellRent: changes.sellRent,
+        price: changes.price,
+        location: changes.location,
+      });
+      commit("setEditAdd", changes);
+    },
   },
   modules: {},
   getters: {
     getPageNumber: (state) => state.pageNumber,
     getAdds: (state) => state.adds,
+    getEditAdd: (state) => state.editAdd,
   },
 });

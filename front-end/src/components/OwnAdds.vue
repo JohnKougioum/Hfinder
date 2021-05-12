@@ -3,7 +3,10 @@
     <div :key="add.id" v-for="add in adds" class="acontainer-adds-results-card">
       <Add :add="add" />
       <div class="acontainer-adds-results-card-controls">
-        <button class="acontainer-adds-results-card-controls-edit">
+        <button
+          @click="gotoEdit(add.id)"
+          class="acontainer-adds-results-card-controls-edit"
+        >
           Επεξεργασία
         </button>
         <button
@@ -32,6 +35,9 @@ export default {
   },
   methods: {
     ...mapActions(["deleteAdd"]),
+    gotoEdit(id) {
+      this.$router.push({ name: "Editlisting", params: { id: id } });
+    },
   },
 };
 </script>

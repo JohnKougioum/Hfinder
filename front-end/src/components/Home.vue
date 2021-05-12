@@ -17,8 +17,9 @@
               id="search_input"
               placeholder="Αναζήτηση τοποθεσίας"
               type="text"
+              v-model="location"
             />
-            <div class="hero-section_area-search_btn">
+            <div class="hero-section_area-search_btn" @click="searchLoc">
               <div class="hero-section_area-search_btn-img">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +71,7 @@
             <div class="covid-banner-content-wrapper-details">
               <p>
                 Πώς ανταποκρίνεται το Hfinder στον COVID-19
-                 <router-link to="/Covid19">Λεπτομέρειες</router-link>
+                <router-link to="/Covid19">Λεπτομέρειες</router-link>
               </p>
             </div>
           </div>
@@ -129,6 +130,16 @@
 <script>
 export default {
   name: "Home",
+  data() {
+    return {
+      location: "",
+    };
+  },
+  methods: {
+    searchLoc() {
+      this.$router.push({ name: "Buy", params: { loc: this.location } });
+    },
+  },
 };
 </script>
 

@@ -42,7 +42,7 @@ export default {
   },
   watch: {
     PageNumber(newValue, oldValue) {
-      this.$store.dispatch("fetchAdds", newValue);
+      this.fetchOwnAdds(newValue);
 
       if (newValue == 1) {
         this.$router.push({ name: "Dashboard" });

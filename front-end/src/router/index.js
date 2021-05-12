@@ -6,16 +6,17 @@ import Register from "../components/Register";
 import Newlisting from "../components/Newlisting";
 import Editprofile from "../components/Editprofile";
 import Dashboard from "../views/Dashboard";
-import Editlisting from "../components/Editlisting"
-import About_us from '../views/About_us';
-import Covid19 from '../views/Covid19';
-import Favourites from '../views/Favourites';
+import Editlisting from "../components/Editlisting";
+import About_us from "../views/About_us";
+import Covid19 from "../views/Covid19";
+import Favourites from "../views/Favourites";
 
 const routes = [
   {
-    path: "/buy",
+    path: "/buy/:loc",
     name: "Buy",
     component: Buy,
+    props: true,
   },
   {
     path: "/",
@@ -48,9 +49,10 @@ const routes = [
     component: Dashboard,
   },
   {
-    path:"/Editlisting",
-    name:"Editlisting",
-    component:Editlisting
+    path: "/Editlisting/:id",
+    name: "Editlisting",
+    component: Editlisting,
+    props: true,
   },
   {
     path: "/about_us",
@@ -60,13 +62,13 @@ const routes = [
   {
     path: "/covid19",
     name: "Covid19",
-    component: Covid19
+    component: Covid19,
   },
   {
     path: "/favourites",
     name: "Favourites",
-    component: Favourites
-  }
+    component: Favourites,
+  },
 ];
 
 const router = createRouter({

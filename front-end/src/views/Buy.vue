@@ -3,9 +3,10 @@
     <div class="acontainer-filters"></div>
     <div class="acontainer-adds">
       <div class="pagination">
+        <h2>Showing adds for "{{ loc }}"</h2>
         <Adds :adds="getAdds" />
 
-        <Pagination :totalItems="10" />
+        <Pagination :totalItems="7" />
       </div>
     </div>
   </div>
@@ -23,10 +24,10 @@ export default {
     Adds,
     Pagination,
   },
-  data() {
-    return {
-      adds: [],
-    };
+  props: {
+    loc: {
+      type: String,
+    },
   },
   mounted() {},
   computed: {
@@ -36,21 +37,25 @@ export default {
     ...mapGetters(["getAdds"]),
   },
   created() {
-    this.fetchAdds(this.PageNumber);
+    const addLocation = this.loc;
+    const newValue = this.PageNumber;
+    this.fetchAdds({ newValue, addLocation });
   },
   methods: {
     ...mapActions(["fetchAdds"]),
   },
   watch: {
     PageNumber(newValue, oldValue) {
-      this.$store.dispatch("fetchAdds", newValue);
+      const addLocation = this.loc;
+      this.fetchAdds({ newValue, addLocation });
 
       if (newValue == 1) {
-        this.$router.push({ name: "Buy" });
+        this.$router.push({ name: "Buy", params: { loc: this.loc } });
         return;
       }
       this.$router.push({
         name: "Buy",
+        params: { loc: this.loc },
         query: { page: newValue },
       });
     },
