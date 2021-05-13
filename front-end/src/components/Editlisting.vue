@@ -25,14 +25,8 @@
         <div class="left-form">
           <form class="new-listing" @submit.prevent="pushEdit">
             <input type="text" name="" placeholder="Διεύθυνση ακινήτου" />
-            <div class="same-row">
-              <input type="text" name="" placeholder="Όνομα" />
-              <input type="text" name="" placeholder="Επίθετο" />
-            </div>
-            <div class="same-row">
-              <input type="text" name="" placeholder="Email επικοινωνίας" />
-              <input type="text" name="" placeholder="Τηλέφωνο επικοινωνίας" />
-            </div>
+
+ 
             <div class="same-row">
               <select name="">
                 <option value="" disabled selected>Είδος ακινήτου</option>
@@ -47,11 +41,14 @@
                 placeholder="Τιμή"
               />
             </div>
-            <input
-              type="text"
-              name=""
-              placeholder="Βασικά χαρακτηριστικά ακινήτου"
-            />
+                    <div class="same-row">
+                    <input type="text" name="" id="" placeholder="Υπνοδωμάτια">
+                    <input type="text" name="" id="" placeholder="Μπάνιο">
+                    </div>
+                    <div class="same-row">
+                    <input type="text" name="" id="" placeholder="Όροφος">
+                    <input type="text" name="" id="" placeholder="Τετραγωνικα μέτρα">
+                    </div>                    
             <input
               type="text"
               name=""
@@ -101,103 +98,105 @@ export default {
 </script>
 
 <style scoped>
-body {
-  margin: 0;
-  font-family: "Lato", sans-serif;
-  background: white;
-  box-sizing: border-box;
+body{
+    margin: 0;
+    font-family: "Lato",sans-serif;
+    background: white;
+    box-sizing: border-box;
+ }
+ h1{
+    margin-left: -75px;
+     text-align: center;
+     margin-top: 60px;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 0.5px;            
 }
-h1 {
-  margin-top: 60px;
-  font-size: 30px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-.edit-listing-container {
-  display: flex;
-}
-.right-edit-listing {
-  width: 50%;
-  padding: 2rem;
-  margin-top: 20px;
-  margin-left: 280px;
-}
-.sell-rent {
-  margin-top: 55px;
-}
-#sell,
-#rent {
-  margin-left: 19px;
-  margin-right: 5px;
-}
+ .edit-listing-container{
+     display: flex;
+ }
+ .right-edit-listing{
+    width: 50%;
+    padding: 2rem;
+    margin-top: 20px;
+    margin-left: 200px;
+ }
+ .sell-rent{
+    text-align: center;
+    margin-left: -75px;
+    margin-top: 55px;
+ }
+ #sell,#rent{
+     margin-left: 19px;
+     margin-right: 5px;
+ }
+ 
+ .same-row{
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     grid-gap: 30px;
+ }
+ form{
+    font-style: normal;
+    width: 94%;
+   padding: 20px 15px 0px 0px;
+   margin: 10px 0 25px;
+   display: grid;
+   grid-template-columns: 1fr ;
+   grid-gap: 22px;
+   box-sizing: border-box;
+   font-size: 23px;
+   font-weight: 400;}
+   input[type=text], select {
+       padding-left: 30px;
+   border: 1.5px solid #000000;
+   box-sizing: border-box;
+   width: 100%;
+   height: 50px;      }
+   #big-textbox{
+       height: 100px;
+   }
 
-.same-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 30px;
-}
-form {
-  font-style: normal;
-  width: 94%;
-  padding: 20px 15px 0px 0px;
-  margin: 10px 0 25px;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 22px;
-  box-sizing: border-box;
-  font-size: 23px;
-  font-weight: 400;
-}
-input[type="text"],
-select {
-  padding-left: 30px;
-  border: 1.5px solid #000000;
-  box-sizing: border-box;
-  width: 100%;
-  height: 50px;
-}
-#big-textbox {
-  height: 100px;
-}
+   .photo-gallery{
+       margin-left: -170px;
+       margin-top: 180px;
+       background-color: #C4C4C4;
+       width: 400px;
+       height: 200px;
+       text-align: center;
+       font-size: 30px;
+       font-weight: 500;
+       letter-spacing: 0.5px;
 
-.photo-gallery {
-  margin-left: -170px;
-  margin-top: 180px;
-  background-color: #c4c4c4;
-  width: 400px;
-  height: 200px;
-  text-align: center;
-  font-size: 30px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-#grey-button {
-  background-color: #dddddd;
-  margin-left: -170px;
-  width: 274px;
-  height: 45px;
-  margin-top: 25px;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
+   }
+   #grey-button{
+       background-color: #DDDDDD;
+       margin-left: -170px;
+       width: 274px;
+       height: 45px;
+       margin-top: 25px;
+       font-size: 16px;
+       font-weight: 500;
+       letter-spacing: 0.5px; 
+   }
 
-#blue-button {
-  margin-left: -170px;
-  margin-top: 215px;
-  width: 290px;
-  height: 50px;
-  background: #0080ff;
-  border-radius: 5px;
-  font-style: normal;
-  font-size: 21px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  line-height: 43px;
-  color: #fffbfb;
-}
+   #blue-button{
+       margin-left: -170px;
+       margin-top: 145px;
+        width: 290px;
+        height: 50px;
+         background: #0080FF;
+         border-radius: 5px;
+         font-style: normal;
+         font-size: 21px;
+         font-weight: 500;
+         letter-spacing: 1px;
+         line-height: 43px;
+         color: #FFFBFB;    
+         
+   }
 
-.left-edit-listing {
-  margin-left: 230px;
-}
+   .left-edit-listing{
+       margin-left: 250px;
+   }
 </style>
