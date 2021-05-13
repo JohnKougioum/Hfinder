@@ -10,6 +10,7 @@ import Editlisting from "../components/Editlisting";
 import About_us from "../views/About_us";
 import Covid19 from "../views/Covid19";
 import Favourites from "../views/Favourites";
+import Selectedlisting from "../components/Selectedlisting"
 
 const routes = [
   {
@@ -69,6 +70,11 @@ const routes = [
     name: "Favourites",
     component: Favourites,
   },
+  {
+    path:"/Selectedlisting",
+    name:"Selectedlisting",
+    component:Selectedlisting
+  }
 ];
 
 const router = createRouter({
