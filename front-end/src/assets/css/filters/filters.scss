@@ -1,0 +1,313 @@
+$main-dark: #343434;
+
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 25px 25px 30px;
+  span {
+    font-size: 17px;
+  }
+
+  .filters-title {
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: space-between;
+    button {
+      background-color: #0080ff;
+      color: white;
+      border: none;
+      border-radius: 7px;
+      padding: 5px;
+      font-size: 16px;
+      outline: none;
+      cursor: pointer;
+      transition: 0.15 ease-in-out;
+    }
+    button:hover {
+      background-color: #0369cf;
+      border-color: #0369cf;
+    }
+  }
+
+  .filters-search {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    .filters-search-title {
+      margin-bottom: 10px;
+    }
+
+    .filters-search-items {
+      display: flex;
+      input {
+        width: 70%;
+        padding: 7px;
+        font-size: 15px;
+        border-radius: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.377);
+      }
+      .filters-search-btn {
+        position: relative;
+        margin-left: 5px;
+        width: 35px;
+        background-color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        border: 1px solid rgba(0, 0, 0, 0.377);
+
+        .filters-seach-btn-icon {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          svg {
+            width: 100%;
+            fill: $main-dark;
+          }
+        }
+      }
+    }
+  }
+
+  .filters-price {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    .filters-price-title {
+      margin-bottom: 10px;
+    }
+    .filters-price-items {
+      display: flex;
+
+      input {
+        width: 100%;
+        padding: 7px;
+        font-size: 15px;
+        border-radius: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.377);
+        text-indent: 37%;
+      }
+
+      .filters-price-items-start {
+        width: 40%;
+        position: relative;
+        display: flex;
+        span {
+          position: absolute;
+          color: #a3a3a3;
+          top: 50%;
+          left: 10%;
+          transform: translate(-50%, -50%);
+        }
+      }
+      .filters-price-items-end {
+        margin-left: 10%;
+        width: 40%;
+        position: relative;
+        display: flex;
+        span {
+          position: absolute;
+          color: #a3a3a3;
+          top: 50%;
+          left: 10%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+
+  .filters-space {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    .filters-space-title {
+      margin-bottom: 10px;
+    }
+
+    .filters-space-items {
+      display: flex;
+
+      input {
+        width: 100%;
+        padding: 7px;
+        font-size: 15px;
+        border-radius: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.377);
+        text-indent: 37%;
+      }
+
+      .filters-space-items-start {
+        width: 40%;
+        position: relative;
+        display: flex;
+        span {
+          position: absolute;
+          color: #a3a3a3;
+          top: 50%;
+          left: 10%;
+          transform: translate(-50%, -50%);
+        }
+      }
+      .filters-space-items-end {
+        margin-left: 10%;
+        width: 40%;
+        position: relative;
+        display: flex;
+        span {
+          position: absolute;
+          color: #a3a3a3;
+          top: 50%;
+          left: 10%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+
+  .filters-bedrooms {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    .filters-bedrooms-title {
+      margin-bottom: 10px;
+    }
+
+    .filters-bedrooms-items {
+      display: flex;
+      flex-direction: column;
+      .container {
+        display: block;
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 16px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 18px;
+        width: 18px;
+        background-color: white;
+      }
+
+      .container:hover input ~ .checkmark {
+        background-color: #ccc;
+      }
+
+      .container input:checked ~ .checkmark {
+        background-color: #2196f3;
+      }
+
+      .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+
+      .container input:checked ~ .checkmark:after {
+        display: block;
+      }
+
+      .container .checkmark:after {
+        left: 6px;
+        top: 2px;
+        width: 3px;
+        height: 7px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  .filters-bathrooms {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    .filters-bathrooms-title {
+      margin-bottom: 10px;
+    }
+
+    .filters-bathrooms-items {
+      display: flex;
+      flex-direction: column;
+      .container {
+        display: block;
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 16px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 18px;
+        width: 18px;
+        background-color: white;
+      }
+
+      .container:hover input ~ .checkmark {
+        background-color: #ccc;
+      }
+
+      .container input:checked ~ .checkmark {
+        background-color: #2196f3;
+      }
+
+      .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+
+      .container input:checked ~ .checkmark:after {
+        display: block;
+      }
+
+      .container .checkmark:after {
+        left: 6px;
+        top: 2px;
+        width: 3px;
+        height: 7px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+  }
+}

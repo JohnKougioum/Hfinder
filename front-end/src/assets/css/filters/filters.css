@@ -1,0 +1,393 @@
+.filters-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 25px 25px 25px 30px;
+}
+
+.filters-container span {
+  font-size: 17px;
+}
+
+.filters-container .filters-title {
+  margin-bottom: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.filters-container .filters-title button {
+  background-color: #0080ff;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  padding: 5px;
+  font-size: 16px;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: 0.15 ease-in-out;
+  transition: 0.15 ease-in-out;
+}
+
+.filters-container .filters-title button:hover {
+  background-color: #0369cf;
+  border-color: #0369cf;
+}
+
+.filters-container .filters-search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.filters-container .filters-search .filters-search-title {
+  margin-bottom: 10px;
+}
+
+.filters-container .filters-search .filters-search-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.filters-container .filters-search .filters-search-items input {
+  width: 70%;
+  padding: 7px;
+  font-size: 15px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.377);
+}
+
+.filters-container .filters-search .filters-search-items .filters-search-btn {
+  position: relative;
+  margin-left: 5px;
+  width: 35px;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.377);
+}
+
+.filters-container .filters-search .filters-search-items .filters-search-btn .filters-seach-btn-icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.filters-container .filters-search .filters-search-items .filters-search-btn .filters-seach-btn-icon svg {
+  width: 100%;
+  fill: #343434;
+}
+
+.filters-container .filters-price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.filters-container .filters-price .filters-price-title {
+  margin-bottom: 10px;
+}
+
+.filters-container .filters-price .filters-price-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.filters-container .filters-price .filters-price-items input {
+  width: 100%;
+  padding: 7px;
+  font-size: 15px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.377);
+  text-indent: 37%;
+}
+
+.filters-container .filters-price .filters-price-items .filters-price-items-start {
+  width: 40%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.filters-container .filters-price .filters-price-items .filters-price-items-start span {
+  position: absolute;
+  color: #a3a3a3;
+  top: 50%;
+  left: 10%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.filters-container .filters-price .filters-price-items .filters-price-items-end {
+  margin-left: 10%;
+  width: 40%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.filters-container .filters-price .filters-price-items .filters-price-items-end span {
+  position: absolute;
+  color: #a3a3a3;
+  top: 50%;
+  left: 10%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.filters-container .filters-space {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.filters-container .filters-space .filters-space-title {
+  margin-bottom: 10px;
+}
+
+.filters-container .filters-space .filters-space-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.filters-container .filters-space .filters-space-items input {
+  width: 100%;
+  padding: 7px;
+  font-size: 15px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.377);
+  text-indent: 37%;
+}
+
+.filters-container .filters-space .filters-space-items .filters-space-items-start {
+  width: 40%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.filters-container .filters-space .filters-space-items .filters-space-items-start span {
+  position: absolute;
+  color: #a3a3a3;
+  top: 50%;
+  left: 10%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.filters-container .filters-space .filters-space-items .filters-space-items-end {
+  margin-left: 10%;
+  width: 40%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.filters-container .filters-space .filters-space-items .filters-space-items-end span {
+  position: absolute;
+  color: #a3a3a3;
+  top: 50%;
+  left: 10%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.filters-container .filters-bedrooms {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.filters-container .filters-bedrooms .filters-bedrooms-title {
+  margin-bottom: 10px;
+}
+
+.filters-container .filters-bedrooms .filters-bedrooms-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.filters-container .filters-bedrooms .filters-bedrooms-items .container {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.filters-container .filters-bedrooms .filters-bedrooms-items .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.filters-container .filters-bedrooms .filters-bedrooms-items .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: white;
+}
+
+.filters-container .filters-bedrooms .filters-bedrooms-items .container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.filters-container .filters-bedrooms .filters-bedrooms-items .container input:checked ~ .checkmark {
+  background-color: #2196f3;
+}
+
+.filters-container .filters-bedrooms .filters-bedrooms-items .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.filters-container .filters-bedrooms .filters-bedrooms-items .container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.filters-container .filters-bedrooms .filters-bedrooms-items .container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 3px;
+  height: 7px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.filters-container .filters-bathrooms {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.filters-container .filters-bathrooms .filters-bathrooms-title {
+  margin-bottom: 10px;
+}
+
+.filters-container .filters-bathrooms .filters-bathrooms-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.filters-container .filters-bathrooms .filters-bathrooms-items .container {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.filters-container .filters-bathrooms .filters-bathrooms-items .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.filters-container .filters-bathrooms .filters-bathrooms-items .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: white;
+}
+
+.filters-container .filters-bathrooms .filters-bathrooms-items .container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.filters-container .filters-bathrooms .filters-bathrooms-items .container input:checked ~ .checkmark {
+  background-color: #2196f3;
+}
+
+.filters-container .filters-bathrooms .filters-bathrooms-items .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.filters-container .filters-bathrooms .filters-bathrooms-items .container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.filters-container .filters-bathrooms .filters-bathrooms-items .container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 3px;
+  height: 7px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/*# sourceMappingURL=filters.css.map */

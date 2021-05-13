@@ -1,6 +1,8 @@
 <template>
   <div class="acontainer">
-    <div class="acontainer-filters"></div>
+    <div class="acontainer-filters">
+      <Filters />
+    </div>
     <div class="acontainer-adds">
       <div class="pagination">
         <OwnAdds :adds="getAdds" />
@@ -14,6 +16,7 @@
 <script>
 import OwnAdds from "../components/OwnAdds";
 import Pagination from "../components/Pagination";
+import Filters from "../components/Filters";
 import axios from "axios";
 import { mapGetters, mapActions } from "vuex";
 
@@ -22,6 +25,7 @@ export default {
   components: {
     OwnAdds,
     Pagination,
+    Filters,
   },
   data() {
     return {

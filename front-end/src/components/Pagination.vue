@@ -104,7 +104,7 @@ a {
   border: none;
   font-size: 1em;
   cursor: auto;
-  background-color: #0080ff;
+  background-color: #a0a0a0be;
   position: relative;
   span {
     color: white;

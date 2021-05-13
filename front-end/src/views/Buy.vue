@@ -1,6 +1,8 @@
 <template>
   <div class="acontainer">
-    <div class="acontainer-filters"></div>
+    <div class="acontainer-filters">
+      <Filters :reg="loc" />
+    </div>
     <div class="acontainer-adds">
       <div class="pagination">
         <h2>Showing adds for "{{ loc }}"</h2>
@@ -15,6 +17,7 @@
 <script>
 import Adds from "../components/Adds";
 import Pagination from "../components/Pagination";
+import Filters from "../components/Filters";
 import axios from "axios";
 import { mapActions, mapGetters } from "vuex";
 
@@ -23,6 +26,7 @@ export default {
   components: {
     Adds,
     Pagination,
+    Filters,
   },
   props: {
     loc: {

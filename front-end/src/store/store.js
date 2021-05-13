@@ -38,15 +38,6 @@ export const store = createStore({
 
       commit("setAdds", response.data);
     },
-    // async fetchAdds({ commit }, pageNumber) {
-    //   const response = await axios.get("https://localhost:5001/Houses", {
-    //     params: {
-    //       page: pageNumber,
-    //     },
-    //   });
-
-    //   commit("setAdds", response.data);
-    // },
     async fetchAdds({ commit }, { newValue, addLocation }) {
       const response = await axios.get(
         `https://localhost:5001/Houses/${addLocation}`,

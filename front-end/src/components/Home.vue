@@ -7,31 +7,51 @@
         <div class="hero-section_area">
           <div class="hero-section_area-title">
             <h1>
-              Discover a place <br />
-              you'll love to live
+              Βρες το ιδανικό σπίτι για εσένα
             </h1>
           </div>
-
           <div class="hero-section_area-search">
-            <input
-              id="search_input"
-              placeholder="Αναζήτηση τοποθεσίας"
-              type="text"
-              v-model="location"
-            />
-            <div class="hero-section_area-search_btn" @click="searchLoc">
-              <div class="hero-section_area-search_btn-img">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z"
-                  />
-                </svg>
+            <div class="hero-section_area-search-option">
+              <select name="sell-rent-options" id="search-option">
+                <option value="Rent">Ενοικίαση</option>
+                <option value="">Αγορά</option>
+              </select>
+            </div>
+            <div class="hero-section_area-search-input">
+              <input
+                id="search_input"
+                placeholder="Αναζήτηση τοποθεσίας"
+                type="text"
+                v-model="location"
+              />
+              <div class="hero-section_area-search_btn" @click="searchLoc">
+                <div class="hero-section_area-search_btn-img">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z"
+                    />
+                  </svg>
+                </div>
               </div>
+            </div>
+          </div>
+          <div class="hero-section_area-search-filters">
+            <div class="hero-section_area-search-filters-price">
+              <span>
+                Τιμή (€)
+                <img src="../assets/images/down-triangle.svg" alt="" />
+              </span>
+            </div>
+            <div class="hero-section_area-search-filters-space">
+              <span>
+                Εμβαδόν (τ.μ.)
+                <img src="../assets/images/down-triangle.svg" alt="" />
+              </span>
             </div>
           </div>
         </div>
@@ -138,6 +158,7 @@ export default {
   methods: {
     searchLoc() {
       this.$router.push({ name: "Buy", params: { loc: this.location } });
+      this.$state.commit("setNewLocation", location);
     },
   },
 };
