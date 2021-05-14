@@ -26,6 +26,21 @@
         </div>
       </div>
     </div>
+    <div class="filters-option">
+      <div class="filters-option-title">
+        <span>Σκοπός:</span>
+      </div>
+      <div class="filters-option-items">
+        <div class="filters-option-items-buy">
+          <input type="radio" id="buy-option" name="option" value="buy" />
+          <label for="option">Αγορά</label>
+        </div>
+        <div class="filters-option-items-rent">
+          <input type="radio" id="rent-option" name="option" value="rent" />
+          <label for="option">Ενοικίαση</label>
+        </div>
+      </div>
+    </div>
     <div class="filters-price">
       <div class="filters-price-title">
         <span>Περιοχή τιμών</span>

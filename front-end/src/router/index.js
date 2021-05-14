@@ -10,8 +10,8 @@ import Editlisting from "../components/Editlisting";
 import About_us from "../views/About_us";
 import Covid19 from "../views/Covid19";
 import Favourites from "../views/Favourites";
-import Selectedlisting from "../components/Selectedlisting"
-import PageNotFound from '../components/PageNotFound'
+import Selectedlisting from "../components/Selectedlisting";
+import PageNotFound from "../components/PageNotFound";
 
 const routes = [
   {
@@ -72,15 +72,16 @@ const routes = [
     component: Favourites,
   },
   {
-    path:"/Selectedlisting",
-    name:"Selectedlisting",
-    component:Selectedlisting
+    path: "/Selectedlisting/:id",
+    name: "Selectedlisting",
+    component: Selectedlisting,
+    props: true,
   },
   {
-    path: '/:catchAll(.*)',
-    name: 'PageNotFound',
-    component: PageNotFound
-  }
+    path: "/:catchAll(.*)",
+    name: "PageNotFound",
+    component: PageNotFound,
+  },
 ];
 
 const router = createRouter({

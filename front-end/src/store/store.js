@@ -35,12 +35,11 @@ export const store = createStore({
           page: pageNumber,
         },
       });
-
       commit("setAdds", response.data);
     },
     async fetchAdds({ commit }, { newValue, addLocation }) {
       const response = await axios.get(
-        `https://localhost:5001/Houses/${addLocation}`,
+        `https://localhost:5001/0/${addLocation}`,
         {
           params: {
             page: newValue,
@@ -59,7 +58,7 @@ export const store = createStore({
 
       commit("removeAdd", id);
     },
-    async fetchEditAdd({ commit }, id) {
+    async fetchAdd({ commit }, id) {
       const response = await axios.get(
         `https://localhost:5001/Houses/id/${id}`
       );
@@ -71,7 +70,16 @@ export const store = createStore({
         sellRent: changes.sellRent,
         price: changes.price,
         location: changes.location,
+        address: changes.address,
+        floor: changes.floor,
+        sm: changes.sm,
+        type: changes.type,
+        beds: changes.beds,
+        baths: changes.baths,
+        heatingType: changes.heatingType,
+        description: changes.description,
       });
+
       commit("setEditAdd", changes);
     },
   },

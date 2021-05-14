@@ -70,6 +70,24 @@ $main-dark: #343434;
     }
   }
 
+  .filters-option {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    .filters-option-title {
+      margin-bottom: 10px;
+    }
+    .filters-option-items {
+      display: flex;
+      .filters-option-items-buy {
+        flex: 1;
+      }
+      .filters-option-items-rent {
+        flex: 1;
+      }
+    }
+  }
+
   .filters-price {
     display: flex;
     flex-direction: column;

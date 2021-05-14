@@ -1,6 +1,11 @@
 <template>
   <div class="acontainer-adds-results">
-    <div :key="add.id" v-for="add in adds" class="acontainer-adds-results-card">
+    <div
+      :key="add.id"
+      v-for="add in adds"
+      @click="goToAdd(add.id)"
+      class="acontainer-adds-results-card"
+    >
       <Add :add="add" />
     </div>
   </div>
@@ -16,6 +21,11 @@ export default {
   },
   components: {
     Add,
+  },
+  methods: {
+    goToAdd(id) {
+      this.$router.push({ name: "Selectedlisting", params: { id: id } });
+    },
   },
 };
 </script>
