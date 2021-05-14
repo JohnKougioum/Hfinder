@@ -25,7 +25,7 @@
             </div>
 
                 
-        <p id="no-acc"> Δεν έχεις λογαριασμο; <span><a id="new-acc" href="#">Δημιουργία εδώ</a></span></p>
+        <p id="no-acc"> Δεν έχεις λογαριασμο; <span><router-link id="new-acc" to="/Register">Δημιουργία εδώ</router-link></span></p>
         </div>
     </div>
 

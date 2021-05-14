@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="already-acc">
-            <p id="already-acc">Έχεις ήδη λογαριασμό<span class="connect"><a href="#" id="connect">Σύνδεση</a></span></p>
+            <p id="already-acc">Έχεις ήδη λογαριασμό;<span class="connect"><router-link to="/Login" id="connect">Σύνδεση</router-link></span></p>
         </div>
     </div>
     
