@@ -14,9 +14,10 @@ namespace hfind.Dtos
         public int Floor {get; init;}
         public int Sm {get; init;}
         public int Type {get; init;}
-        public int Rooms {get; init;} 
+       public int Beds {get; init;} 
+        public int Baths {get; init;} 
         public int HeatingType {get; init;}
-
+ public string Description {get; init;}
     public  DateTimeOffset CreatedDate { get; init; }
     
  }

@@ -55,6 +55,7 @@ namespace hfind.Repositories
       public async Task<IEnumerable<House>> GetSellRentLocationAsync(string Location, int SellRent)
         {
             var filter = filterBuilder.Eq(House => House.Location , Location);
+            filter &= filterBuilder.Eq(House => House.SellRent ,SellRent);
            return await itemsCollection.Find(filter).ToListAsync();
         }
      public async Task<IEnumerable<House>> GetHouseLocAsync(String Location)

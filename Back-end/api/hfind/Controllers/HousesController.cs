@@ -57,7 +57,10 @@ public class HousesController : ControllerBase
           Floor = HouseDto.Floor,
           Sm = HouseDto.Sm,
           Type = HouseDto.Type,
-          Rooms = HouseDto.Rooms,
+          Beds = HouseDto.Beds,
+          Baths = HouseDto.Baths,
+          Description = HouseDto.Description,
+           HeatingType = HouseDto.HeatingType,
           CreatedDate = DateTimeOffset.UtcNow
         };
         await repository.CreateHouseAsync(House);
@@ -79,7 +82,10 @@ public class HousesController : ControllerBase
           Floor = HouseDto.Floor,
           Sm = HouseDto.Sm,
           Type = HouseDto.Type,
-          Rooms = HouseDto.Rooms
+          Beds = HouseDto.Beds,
+          Baths = HouseDto.Baths,
+          Description = HouseDto.Description,
+           HeatingType = HouseDto.HeatingType,
       };
       await repository.UpdateHouseAsync(updatedHouse);
       return NoContent();

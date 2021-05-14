@@ -31,7 +31,7 @@ namespace hfind.Repositories
            await itemsCollection.InsertOneAsync(User);
         }
 
-        public Task<User> GetUser(Guid UserId ,string Username, string Password, string Email, string Firstname, string Lastname, int Phone, int Type, DateTimeOffset CreatedDateUser)
+        public Task<User> GetUser(string Username, string Password, string Email, string Firstname, string Lastname, int Phone, int Type)
         {
             throw new NotImplementedException();
         }

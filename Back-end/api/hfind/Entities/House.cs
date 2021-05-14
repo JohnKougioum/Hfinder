@@ -4,7 +4,7 @@ namespace hfind.Entities
 {
     public record House
     {
-         public string UserId { get; init; }
+        public string UserId { get; init; }
 
         public Guid Id { get; init; }
         public int SellRent { get; init; }
@@ -14,8 +14,10 @@ namespace hfind.Entities
         public int Floor {get; init;}
         public int Sm {get; init;}
         public int Type {get; init;}
-        public int Rooms {get; init;} 
+        public int Beds {get; init;} 
+        public int Baths {get; init;} 
         public int HeatingType {get; init;}
+        public string Description {get; init;}
         public DateTimeOffset CreatedDate { get; init; }
 
 

@@ -30,27 +30,26 @@ public class Userscontroller : ControllerBase , IHttpActionResult
       }
       return User.AsDto();
     }
-    // [HttpPost("register/")]
-    // public async Task<ActionResult<UserDto>> CreateUserAsync([FromBody]User User){
-    //   var usr = await repository.GetUser(
-    //   //  new User = UserDto;
-    //   );
-    //         if (usr != null){
+    [HttpPost("register/")]
+    public async Task<ActionResult<UserDto>> CreateUserAsync([FromBody]User User){
+      var usr = await repository.GetUser(
+     User.Username , User.Password,User.Email,User.Firstname,User.Lastname,User.Phone,User.Type);
+            if (usr != null){
 
-    //             var token = new JwtTokenBuilder()
-    //                                 .AddSecurityKey(JwtSecurityKey.Create("key-value-token-expires"))
-    //                                 .AddSubject( User.Username)
-    //                                 .AddIssuer("issuerTest")
-    //                                 .AddAudience("bearerTest")
-    //                                 .AddClaim("MembershipId", "111")
-    //                                 .AddExpiry(1)
-    //                                 .Build();
+                var token = new JwtTokenBuilder()
+                                    .AddSecurityKey(JwtSecurityKey.Create("key-value-token-expires"))
+                                    .AddSubject( User.Username)
+                                    .AddIssuer("issuerTest")
+                                    .AddAudience("bearerTest")
+                                    .AddClaim("MembershipId", "111")
+                                    .AddExpiry(1)
+                                    .Build();
 
-    //             return Ok(token.Value);
+                return Ok(token.Value);
 
-    //         }else
-    //             return Unauthorized();
-    //     }
+            }else
+                return Unauthorized();
+        }
     //     await repository.CreateUserAsync(User);
     //     var CreatedUser = CreatedAtAction(nameof(GetUserAsync), new {UserId = User.UserId}, User.AsDto());
     //     if(!CreatedUser.Successed)

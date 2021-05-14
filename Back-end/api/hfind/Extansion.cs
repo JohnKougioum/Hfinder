@@ -15,8 +15,11 @@ namespace hfind
                   Address = House.Address,
                   Floor = House.Floor,
                   Sm = House.Sm,
+                  HeatingType = House.HeatingType,
                   Type = House.Type,
-                  Rooms = House.Rooms,
+                  Description = House.Description,
+                  Beds = House.Beds,
+                  Baths = House.Baths,
                   CreatedDate = House.CreatedDate
      
         };
