@@ -1,10 +1,9 @@
 using System;
-using MongoDB.Bson.Serialization.Attributes;
-
-namespace hfind.Entities
+namespace hfind.Dtos
 {
-    public record User
-    {
+
+ public record UserDto 
+ {
         public Guid UserId { get; init; }
         public string Username { get; init; }
         public string Password { get; init; }
@@ -14,8 +13,6 @@ namespace hfind.Entities
         public int Phone { get; init;}
         public int Type { get; init;}
         public DateTimeOffset CreatedDateUser { get; init; }
+ }
 
-       
-        
-    }
 }

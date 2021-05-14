@@ -48,10 +48,16 @@ public class HousesController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<HouseDto>> CreateHouseAsync(CreateHouseDto HouseDto){
         House House = new(){
+          UserId = HouseDto.UserId,         
           Id = Guid.NewGuid(),
           Price = HouseDto.Price,
           SellRent = HouseDto.SellRent,
           Location = HouseDto.Location,
+          Address = HouseDto.Address,
+          Floor = HouseDto.Floor,
+          Sm = HouseDto.Sm,
+          Type = HouseDto.Type,
+          Rooms = HouseDto.Rooms,
           CreatedDate = DateTimeOffset.UtcNow
         };
         await repository.CreateHouseAsync(House);
@@ -68,7 +74,12 @@ public class HousesController : ControllerBase
       House updatedHouse = existingHouse with{
         Price = HouseDto.Price,
         SellRent = HouseDto.SellRent,
-        Location = HouseDto.Location
+        Location = HouseDto.Location,
+        Address = HouseDto.Address,
+          Floor = HouseDto.Floor,
+          Sm = HouseDto.Sm,
+          Type = HouseDto.Type,
+          Rooms = HouseDto.Rooms
       };
       await repository.UpdateHouseAsync(updatedHouse);
       return NoContent();
@@ -86,11 +97,11 @@ public class HousesController : ControllerBase
 
     }
    
-    [HttpGet("/SellRent/{SellRent}")]
+    [HttpGet("/SellRent/{Location}")]
   
-   public async Task<IEnumerable<HouseDto>> GetSellRentAsync(int SellRent)
+   public async Task<IEnumerable<HouseDto>> GetSellRentLocationAsync(string Location, int SellRent)
    {
-     var houses = (await repository.GetSellRentAsync(SellRent))
+     var houses = (await repository.GetSellRentLocationAsync(Location,SellRent))
                  .Select(House => House.AsDto());
      return houses;
    }

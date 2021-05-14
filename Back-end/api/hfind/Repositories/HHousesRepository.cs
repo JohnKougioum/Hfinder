@@ -12,11 +12,11 @@ namespace hfind.Repositories
        Task<House> GetHouseAsync(Guid id);
         Task<IEnumerable<House>> GetHouseAsync(int page);
 
-       Task<IEnumerable<House>> GetSellRentAsync(int SellRent);
+       Task<IEnumerable<House>> GetSellRentLocationAsync(string Location, int SellRent);
        //   Task<House> GetRentAsync(int SellRent);
         Task CreateHouseAsync(House house);
         Task UpdateHouseAsync(House house);
         Task DeleteHouseAsync(Guid id);
-       Task<IEnumerable<House>> GetHouseLocAsync(string Region);
+       Task<IEnumerable<House>> GetHouseLocAsync(string RegRegionion);
     }
 }
