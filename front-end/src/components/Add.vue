@@ -7,12 +7,21 @@
       <h1 class="acontainer-adds-results-card-container-content-price">
         {{ add.price.toLocaleString("es-ES") }} €
       </h1>
-      <span><img src="../assets/images/bed.svg" alt="" />bd</span>
-      <span><img src="../assets/images/bathtub.svg" alt="" />ba</span>
-      <span><img src="../assets/images/sqf.svg" alt="" />sqft</span>
+      <span
+        ><img src="../assets/images/bed.svg" alt="" />{{ add.beds }} bd</span
+      >
+      <span
+        ><img src="../assets/images/bathtub.svg" alt="" />{{
+          add.baths
+        }}
+        ba</span
+      >
+      <span
+        ><img src="../assets/images/sqf.svg" alt="" />{{ add.sm }} sqft</span
+      >
       <div class="acontainer-adds-results-card-container-content-address">
-        <h4>720 Clayton St.</h4>
-        <h4>Haight, San Fransisco, CA</h4>
+        <h4>{{ add.address }}</h4>
+        <h4>{{ add.location }}</h4>
       </div>
     </div>
   </div>

@@ -6,6 +6,9 @@ export const store = createStore({
     pageNumber: 1,
     adds: [],
     editAdd: [],
+    location: "",
+    rent: 0,
+    buy: 1,
   },
   mutations: {
     prevPage(state) {
@@ -27,19 +30,25 @@ export const store = createStore({
     removeAdd: (state, id) =>
       (state.adds = state.adds.filter((add) => add.id !== id)),
     setEditAdd: (state, editAdd) => (state.editAdd = editAdd),
+    setNewLocation: (state, location) => (state.location = location),
   },
   actions: {
     async fetchOwnAdds({ commit }, pageNumber) {
-      const response = await axios.get("https://localhost:5001/Houses/", {
+      const response = await axios.get("https://localhost:5001/UserHouses/1", {
         params: {
           page: pageNumber,
         },
       });
       commit("setAdds", response.data);
     },
-    async fetchAdds({ commit }, { newValue, addLocation }) {
+    async fetchAdds({ commit }, { newValue, addLocation, path }) {
+      let choice;
+
+      if (path == "Buy") choice = 1;
+      if (path == "Rent") choice = 0;
+
       const response = await axios.get(
-        `https://localhost:5001/0/${addLocation}`,
+        `https://localhost:5001/${choice}/${addLocation}`,
         {
           params: {
             page: newValue,
@@ -58,7 +67,7 @@ export const store = createStore({
 
       commit("removeAdd", id);
     },
-    async fetchAdd({ commit }, id) {
+    async fetchOneAdd({ commit }, id) {
       const response = await axios.get(
         `https://localhost:5001/Houses/id/${id}`
       );

@@ -43,7 +43,8 @@ export default {
   created() {
     const addLocation = this.loc;
     const newValue = this.PageNumber;
-    this.fetchAdds({ newValue, addLocation });
+    const path = this.$route.name;
+    this.fetchAdds({ newValue, addLocation, path });
   },
   methods: {
     ...mapActions(["fetchAdds"]),

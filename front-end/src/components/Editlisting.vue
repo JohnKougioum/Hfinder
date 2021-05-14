@@ -49,9 +49,16 @@
                 type="text"
                 name=""
                 id="newBeds"
+                :value="toEditAdd.beds"
                 placeholder="Υπνοδωμάτια"
               />
-              <input type="text" name="" id="newBaths" placeholder="Μπάνιο" />
+              <input
+                type="text"
+                name=""
+                id="newBaths"
+                :value="toEditAdd.baths"
+                placeholder="Μπάνιο"
+              />
             </div>
             <div class="same-row">
               <input
@@ -99,7 +106,7 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch("fetchAdd", this.id);
+    this.$store.dispatch("fetchOneAdd", this.id);
   },
   methods: {
     ...mapActions(["pushEditAdd"]),
@@ -120,8 +127,8 @@ export default {
         floor: document.getElementById("newFloor").value,
         sm: document.getElementById("newSm").value,
         type: this.toEditAdd.type,
-        beds: this.toEditAdd.beds,
-        baths: this.toEditAdd.baths,
+        beds: document.getElementById("newBeds").value,
+        baths: document.getElementById("newBaths").value,
         heatingType: this.toEditAdd.heatingType,
         description: this.toEditAdd.description,
       };

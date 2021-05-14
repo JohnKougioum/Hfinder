@@ -158,7 +158,7 @@ export default {
   methods: {
     searchLoc() {
       this.$router.push({ name: "Buy", params: { loc: this.location } });
-      this.$state.commit("setNewLocation", location);
+      this.$store.commit("setNewLocation", this.location);
     },
   },
 };

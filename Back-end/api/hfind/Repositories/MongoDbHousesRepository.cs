@@ -38,13 +38,18 @@ namespace hfind.Repositories
 
         public async Task<House> GetHouseAsync(Guid id)
         {
+            
             var filter = filterBuilder.Eq(House => House.Id, id);
             return await itemsCollection.Find(filter).SingleOrDefaultAsync();
         }
 
         public async Task<IEnumerable<House>> GetHouseAsync(int page )
         {
-            return await itemsCollection.Find(new BsonDocument()).Limit(page).ToListAsync();
+            int limit=4;
+
+            int skipCount = (page - 1) * limit;
+
+            return await itemsCollection.Find(new BsonDocument()).Skip(skipCount).Limit(limit).ToListAsync();
         }
 
         public async Task UpdateHouseAsync(House House)
@@ -52,11 +57,24 @@ namespace hfind.Repositories
             var filter = filterBuilder.Eq(existingHouse => existingHouse.Id, House.Id);
             await itemsCollection.ReplaceOneAsync(filter, House);
         }
-      public async Task<IEnumerable<House>> GetSellRentLocationAsync(string Location, int SellRent)
+      public async Task<IEnumerable<House>> GetSellRentLocationAsync(string Location, int SellRent,int page)
         {
+            int limit=4;
+
+            int skipCount = (page - 1) * limit;
+
             var filter = filterBuilder.Eq(House => House.Location , Location);
             filter &= filterBuilder.Eq(House => House.SellRent ,SellRent);
-           return await itemsCollection.Find(filter).ToListAsync();
+           return await itemsCollection.Find(filter).Skip(skipCount).Limit(limit).ToListAsync();
+        }
+      public async Task<IEnumerable<House>> GetUserAddsAsync(string User,int page)
+        {
+            int limit=4;
+
+            int skipCount = (page - 1) * limit;
+
+            var filter = filterBuilder.Eq(House => House.UserId , User);
+           return await itemsCollection.Find(filter).Skip(skipCount).Limit(limit).ToListAsync();
         }
      public async Task<IEnumerable<House>> GetHouseLocAsync(String Location)
         {

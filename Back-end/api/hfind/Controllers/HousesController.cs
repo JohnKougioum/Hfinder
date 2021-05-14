@@ -103,14 +103,21 @@ public class HousesController : ControllerBase
 
     }
    
-    [HttpGet("/SellRent/{Location}")]
+    [HttpGet("/{SellRent}/{Location}")]
   
-   public async Task<IEnumerable<HouseDto>> GetSellRentLocationAsync(string Location, int SellRent)
+   public async Task<IEnumerable<HouseDto>> GetSellRentLocationAsync(string Location, int SellRent, int page)
    {
-     var houses = (await repository.GetSellRentLocationAsync(Location,SellRent))
+     var houses = (await repository.GetSellRentLocationAsync(Location,SellRent,page))
                  .Select(House => House.AsDto());
      return houses;
    }
+   [HttpGet("/UserHouses/{User}")]
+    public async Task<IEnumerable<HouseDto>> GetUserAddsAsync(string User, int page)
+    {
+     var houses = (await repository.GetUserAddsAsync(User,page))
+                 .Select(House => House.AsDto());
+     return houses;
+    }
   }
 
 }
