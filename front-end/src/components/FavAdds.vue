@@ -9,6 +9,14 @@
         >
           Διαγραφή
         </button>
+        <!-- <div
+          :key="add.id"
+          v-for="add in adds"
+          @click="goToAdd(add.id)"
+          class="acontainer-adds-results-card"
+        > 
+        <Add :add="add" />
+        -->
       </div>
     </div>
   </div>
@@ -28,10 +36,9 @@ export default {
     Add,
   },
   methods: {
-    // deleteAdd(id) {
-    //   console.log(id);
-    // },
-    ...mapActions(["deleteAdd"]),
+    goToAdd(id) {
+      this.$router.push({ name: "Selectedlisting", params: { id: id } });
+    },
   },
 };
 </script>
