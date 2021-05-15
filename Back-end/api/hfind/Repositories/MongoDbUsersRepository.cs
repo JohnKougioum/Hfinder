@@ -31,26 +31,34 @@ namespace hfind.Repositories
            await itemsCollection.InsertOneAsync(User);
         }
 
-        public Task<User> GetUser(string Username, string Password, string Email, string Firstname, string Lastname, int Phone, int Type)
+        public async Task<User> GetUserAsync(Guid Id)
         {
-            throw new NotImplementedException();
-        }
-
-        public async Task<User> GetUserAsync(Guid UserId)
-        {
-            var filter = filterBuilder.Eq(User => User.UserId, UserId);
+            var filter = filterBuilder.Eq(User => User.Id, Id);
             return await itemsCollection.Find(filter).SingleOrDefaultAsync();
         }
 
-        public Task<List<User>> GetUsers()
+        public async Task<User> GetUserAsync(string Username, string Password)
         {
-            throw new NotImplementedException();
+            var filter = filterBuilder.Eq(User => User.Username, Username);
+              filter &= filterBuilder.Eq(User => User.Password, Password);
+            return await itemsCollection.Find(filter).SingleOrDefaultAsync();
+        }
+
+        public async Task LoginUserAsync(string Username, string Password)
+        {
+             var filter = filterBuilder.Eq(User => User.Username, Username);
+            filter &= filterBuilder.Eq(User => User.Password, Password);
+            await itemsCollection.Find(filter).SingleOrDefaultAsync();
+           
+          
         }
 
         public async Task UpdateUserAsync(User User)
         {
-             var filter = filterBuilder.Eq(existingUser => existingUser.UserId, User.UserId);
+             var filter = filterBuilder.Eq(existingUser => existingUser.Id, User.Id);
             await itemsCollection.ReplaceOneAsync(filter, User);
         }
+
+    
     }
 }

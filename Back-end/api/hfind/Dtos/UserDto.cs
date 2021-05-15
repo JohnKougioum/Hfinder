@@ -4,7 +4,7 @@ namespace hfind.Dtos
 
  public record UserDto 
  {
-        public Guid UserId { get; init; }
+        public Guid Id { get; init; }
         public string Username { get; init; }
         public string Password { get; init; }
         public string Email { get; init; }
@@ -12,6 +12,7 @@ namespace hfind.Dtos
         public string Lastname { get; init;}
         public int Phone { get; init;}
         public int Type { get; init;}
+        public string LikedHouses { get; init;}
         public DateTimeOffset CreatedDateUser { get; init; }
  }
 

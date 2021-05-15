@@ -20,6 +20,7 @@ namespace hfind
                   Description = House.Description,
                   Beds = House.Beds,
                   Baths = House.Baths,
+                  Report = House.Report,
                   CreatedDate = House.CreatedDate
      
         };
@@ -28,7 +29,7 @@ namespace hfind
     {
         return new UserDto
         {
-         UserId = User.UserId,
+         Id = User.Id,
           Username = User.Username,
           Password = User.Password,
           Email = User.Email,
@@ -36,6 +37,7 @@ namespace hfind
           Lastname = User.Lastname,
           Phone  = User.Phone,
           Type = User.Type,
+          LikedHouses =User.LikedHouses,
           CreatedDateUser = User.CreatedDateUser
         };
     }

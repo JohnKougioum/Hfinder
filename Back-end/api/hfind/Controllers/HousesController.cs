@@ -103,21 +103,36 @@ public class HousesController : ControllerBase
 
     }
    
-    [HttpGet("/{SellRent}/{Location}")]
+    [HttpGet("/SellRent/{Location}")]
   
-   public async Task<IEnumerable<HouseDto>> GetSellRentLocationAsync(string Location, int SellRent, int page)
+   public async Task<IEnumerable<HouseDto>> GetSellRentLocationAsync(string Location, int SellRent)
    {
-     var houses = (await repository.GetSellRentLocationAsync(Location,SellRent,page))
+     var houses = (await repository.GetSellRentLocationAsync(Location,SellRent))
                  .Select(House => House.AsDto());
      return houses;
    }
-   [HttpGet("/UserHouses/{User}")]
-    public async Task<IEnumerable<HouseDto>> GetUserAddsAsync(string User, int page)
-    {
-     var houses = (await repository.GetUserAddsAsync(User,page))
+   [HttpPut("report/{id}")]
+    public async Task<ActionResult> ReportHouseAsync(Guid id,ReportHouseDto HouseDto){
+      var existingHouse = await repository.GetHouseAsync(id);
+      if (existingHouse is null)
+      {
+        return NotFound();
+
+      }
+      House updatedHouse = existingHouse with{
+        Report = HouseDto.Report
+      };
+      await repository.ReportHouseAsync(updatedHouse);
+      return NoContent();
+    }
+      [HttpGet("/reported")]
+  
+   public async Task<IEnumerable<HouseDto>> GetHouseReportAsync(int report)
+   {
+     var houses = (await repository.GetHouseReportAsync(report))
                  .Select(House => House.AsDto());
      return houses;
-    }
+   }
   }
 
 }

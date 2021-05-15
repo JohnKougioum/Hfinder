@@ -9,9 +9,11 @@ namespace hfind.Repositories
 
     public interface UUsersRepository 
     {
-     Task<User> GetUserAsync(Guid UserId);
-     Task<User> GetUser(string Username, string Password,string Email, string Firstname,string Lastname, int Phone, int Type);
-        Task UpdateUserAsync(User User);
+     Task<User> GetUserAsync(Guid Id);
+      Task<User> GetUserAsync(string Username ,string Password);
+        Task UpdateUserAsync(User user);
        Task CreateUserAsync(User User);
+       Task LoginUserAsync(string Username ,string Password);
+       
     }
 }

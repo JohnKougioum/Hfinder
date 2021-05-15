@@ -6,14 +6,13 @@ using System;
 using System.Linq;
 using hfind.Dtos;
 using System.Threading.Tasks;
-using rest.Controllers;
 using rest.Infra;
 
 namespace hfind.Controllers
 {
 [ApiController]
 [Route("Users")]
-public class Userscontroller : ControllerBase , IHttpActionResult
+public class Userscontroller : ControllerBase 
 {
     private readonly UUsersRepository repository;
     public Userscontroller(UUsersRepository repository)
@@ -21,9 +20,9 @@ public class Userscontroller : ControllerBase , IHttpActionResult
         this.repository = repository;
     }
      [HttpGet("get/")]
-   public async Task<ActionResult<UserDto>> GetUserAsync(Guid UserId)
+   public async Task<ActionResult<UserDto>> GetUserAsync(Guid Id)
     {
-      var User = await repository.GetUserAsync(UserId);
+      var User = await repository.GetUserAsync(Id);
       if(User is null)
       {
         return NotFound();
@@ -31,14 +30,27 @@ public class Userscontroller : ControllerBase , IHttpActionResult
       return User.AsDto();
     }
     [HttpPost("register/")]
-    public async Task<ActionResult<UserDto>> CreateUserAsync([FromBody]User User){
-      var usr = await repository.GetUser(
-     User.Username , User.Password,User.Email,User.Firstname,User.Lastname,User.Phone,User.Type);
+    public async Task<ActionResult<UserDto>> CreateUserAsync(CreateUserDto UserDto){
+     
+        User User = new(){
+            Id =Guid.NewGuid(),
+            Username = UserDto.Username,
+            Password = UserDto.Password,
+            Email = UserDto.Email,
+            Firstname = UserDto.Firstname,
+            Lastname = UserDto.Lastname,
+            Phone = UserDto.Phone,
+            Type = UserDto.Type,
+            CreatedDateUser = DateTimeOffset.UtcNow
+              };
+    
+          await repository.CreateUserAsync(User);
+          var usr = CreatedAtAction(nameof(GetUserAsync), new {Id = User.Id}, User.AsDto());
             if (usr != null){
 
                 var token = new JwtTokenBuilder()
                                     .AddSecurityKey(JwtSecurityKey.Create("key-value-token-expires"))
-                                    .AddSubject( User.Username)
+                                    .AddSubject(User.Username)
                                     .AddIssuer("issuerTest")
                                     .AddAudience("bearerTest")
                                     .AddClaim("MembershipId", "111")
@@ -50,24 +62,9 @@ public class Userscontroller : ControllerBase , IHttpActionResult
             }else
                 return Unauthorized();
         }
-    //     await repository.CreateUserAsync(User);
-    //     var CreatedUser = CreatedAtAction(nameof(GetUserAsync), new {UserId = User.UserId}, User.AsDto());
-    //     if(!CreatedUser.Successed)
-    //     {
-    //       return BadRequest(new AuthFailedResponse{
-
-    //         Erros = AuthFailedResponse.Erros
-    //       });
-    //     }
-    //     return Ok(new AuthResponse
-    //     {
-    //       Token = AuthResponse.Token
-    //     });
-       
-    // }
-     [HttpPut("{UserId}")]
-    public async Task<ActionResult> UpdateUserAsync(Guid UserId,UpdateUserDto UserDto){
-      var existingUser = await repository.GetUserAsync(UserId);
+     [HttpPut("{Id}")]
+    public async Task<ActionResult> UpdateUserAsync(Guid Id,UpdateUserDto UserDto){
+      var existingUser = await repository.GetUserAsync(Id);
       if (existingUser is null)
       {
         return NotFound();
@@ -84,5 +81,25 @@ public class Userscontroller : ControllerBase , IHttpActionResult
       await repository.UpdateUserAsync(updatedUser);
       return NoContent();
     }
+     [HttpPost("login/")]
+   public async Task<ActionResult> LoginUserAsync(LoginUserDto UserDto)
+    {
+      var usr = await repository.GetUserAsync(UserDto.Username , UserDto.Password);
+      if (usr != null){
+
+                var token = new JwtTokenBuilder()
+                                    .AddSecurityKey(JwtSecurityKey.Create("key-value-token-expires"))
+                                    .AddSubject(UserDto.Username)
+                                    .AddIssuer("issuerTest")
+                                    .AddAudience("bearerTest")
+                                    .AddClaim("MembershipId", "111")
+                                    .AddExpiry(1)
+                                    .Build();
+
+                return Ok(token.Value);
+
+            }else
+                return Unauthorized();
+        }
+    }
   }
-}
