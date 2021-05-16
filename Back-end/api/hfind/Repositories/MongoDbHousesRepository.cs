@@ -47,7 +47,7 @@ namespace hfind.Repositories
 
         public async Task<IEnumerable<House>> GetHouseAsync(int page )
         {
-            int limit=4;
+            int limit=20;
 
             int skipCount = (page - 1) * limit;
 
@@ -61,7 +61,7 @@ namespace hfind.Repositories
         }
       public async Task<IEnumerable<House>> GetSellRentLocationAsync(string Location, int SellRent, int page,double startPrice, double endPrice, int startSm, int endSm, int Beds, int Baths)
         {
-            int limit=4;
+            int limit=20;
 
             int skipCount = (page - 1) * limit;
 
@@ -105,7 +105,7 @@ namespace hfind.Repositories
         }
       public async Task<IEnumerable<House>> GetUserAddsAsync(string User, int page,string Location, int SellRent,  double startPrice, double endPrice, int startSm, int endSm, int Beds, int Baths)
         {
-            int limit=4;
+            int limit=20;
 
             int skipCount = (page - 1) * limit;
 
