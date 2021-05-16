@@ -82,18 +82,18 @@ public class Userscontroller : ControllerBase
       return NoContent();
     }
      [HttpPost("login/")]
-   public async Task<ActionResult> LoginUserAsync(LoginUserDto UserDto)
+   public async Task<ActionResult> LoginUserAsync(LoginUserDto User)
     {
-      var usr = await repository.GetUserAsync(UserDto.Username , UserDto.Password);
+      var usr = await repository.GetUserAsync(User.Username , User.Password);
       if (usr != null){
 
                 var token = new JwtTokenBuilder()
                                     .AddSecurityKey(JwtSecurityKey.Create("key-value-token-expires"))
-                                    .AddSubject(UserDto.Username)
+                                    .AddSubject(User.Id)
                                     .AddIssuer("issuerTest")
                                     .AddAudience("bearerTest")
                                     .AddClaim("MembershipId", "111")
-                                    .AddExpiry(1)
+                                    .AddExpiry(5000)
                                     .Build();
 
                 return Ok(token.Value);
@@ -102,4 +102,5 @@ public class Userscontroller : ControllerBase
                 return Unauthorized();
         }
     }
+    
   }

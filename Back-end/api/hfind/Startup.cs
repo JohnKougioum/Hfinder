@@ -45,16 +45,12 @@ namespace hfind
             Configuration.Bind(key: nameof(JwtSettings), JwtSettings);
             services.AddSingleton(JwtSettings);
 
-            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>{
-                builder.AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader();
-            }));
-            
+
             services.AddAuthentication(configureOptions: x =>{
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
 
 
             })
@@ -109,6 +105,7 @@ namespace hfind
            });
            services.AddSingleton<UUsersRepository, MongoDbUsersRepository>();
             services.AddSingleton<HHousesRepository, MongoDbHousesRepository>();
+            services.AddSingleton<LLikeHouseByUserRepository, MongoDbLikeHouseByUserRepository>();
             services.AddControllers(options =>{
                 options.SuppressAsyncSuffixInActionNames = false;
 

@@ -11,7 +11,7 @@ namespace hfind.Repositories
     
     public class MongoDbHousesRepository : HHousesRepository
     {
-        private const string databaseName = "hifind";
+        private const string databaseName = "hfind";
         private const string collectionName = "Houses";
         
         private readonly IMongoCollection<House> itemsCollection;
@@ -38,7 +38,6 @@ namespace hfind.Repositories
 
         public async Task<House> GetHouseAsync(Guid id)
         {
-            
             var filter = filterBuilder.Eq(House => House.Id, id);
             return await itemsCollection.Find(filter).SingleOrDefaultAsync();
         }
@@ -117,22 +116,6 @@ namespace hfind.Repositories
             //return await HousesCollection.Find(new BsonDocument(),filer).ToListAsync();
         }
 
-        //   public async Task<User> GetUserAsync(Guid UserId)
-        // {
-        //    var filter = filterBuilder.Eq(User => User.UserId, UserId);
-        //     return await itemsCollection.Find(filter).SingleOrDefaultAsync();
-        // }
-
-      
-        // public async Task UpdateUserAsync(User User)
-        // {
-        //    var filter = filterBuilder.Eq(existingUser => existingUser.Id, User.UserId);
-        //     await  itemsCollection.ReplaceOneAsync(filter, User);
-        // }
-        // public async Task CreateUserAsync(User User)
-        // {
-        //    await itemsCollection.InsertOneAsync(User);
-        // }
         public async Task ReportHouseAsync(House House)
         {
              var filter = filterBuilder.Eq(existingHouse => existingHouse.Id, House.Id);
@@ -144,6 +127,29 @@ namespace hfind.Repositories
              var filter = filterBuilder.Eq(House => House.Report , Report);
            return await itemsCollection.Find(filter).ToListAsync();
         }
-        
+
+        // public async Task<House> GetCountHouseAsync()
+        // {
+        //     //  return await itemsCollection.Count;
+        // }
+
+        //   public async Task<User> GetUserAsync(Guid UserId)
+        // {
+        //    var filter = filterBuilder.Eq(User => User.UserId, UserId);
+        //     return await itemsCollection.Find(filter).SingleOrDefaultAsync();
+        // }
+
+
+        // public async Task UpdateUserAsync(User User)
+        // {
+        //    var filter = filterBuilder.Eq(existingUser => existingUser.Id, User.UserId);
+        //     await  itemsCollection.ReplaceOneAsync(filter, User);
+        // }
+        // public async Task CreateUserAsync(User User)
+        // {
+        //    await itemsCollection.InsertOneAsync(User);
+        // }
+
+
     }
 }
