@@ -7,7 +7,7 @@ namespace hfind.Dtos
     [Required]
     public int SellRent { get; init;}
     [Required]
-    public double Price { get; init;}
+    public decimal Price { get; init;}
  [Required]
     public string Location { get; init;}
      public string Address { get; init; }
@@ -18,5 +18,6 @@ namespace hfind.Dtos
         public int Baths {get; init;} 
         public int HeatingType {get; init;}
          public string Description {get; init;}
+         public int Report{get;init;}
     }
 }

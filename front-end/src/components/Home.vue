@@ -13,8 +13,8 @@
           <div class="hero-section_area-search">
             <div class="hero-section_area-search-option">
               <select name="sell-rent-options" id="search-option">
-                <option value="0">Ενοικίαση</option>
-                <option value="1">Αγορά</option>
+                <option value="Rent">Ενοικίαση</option>
+                <option value="">Αγορά</option>
               </select>
             </div>
             <div class="hero-section_area-search-input">
@@ -157,13 +157,7 @@ export default {
   },
   methods: {
     searchLoc() {
-      let option = document.getElementById("search-option").value;
-
-      if (option == 0)
-        this.$router.push({ name: "Rent", params: { loc: this.location } });
-      if (option == 1)
-        this.$router.push({ name: "Buy", params: { loc: this.location } });
-
+      this.$router.push({ name: "Buy", params: { loc: this.location } });
       this.$store.commit("setNewLocation", this.location);
     },
   },

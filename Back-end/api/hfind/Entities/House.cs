@@ -8,7 +8,7 @@ namespace hfind.Entities
 
         public Guid Id { get; init; }
         public int SellRent { get; init; }
-        public Double Price { get; init; }
+        public decimal Price { get; init; }
         public string Location { get; init; }
         public string Address { get; init; }
         public int Floor {get; init;}

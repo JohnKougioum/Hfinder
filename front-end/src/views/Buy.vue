@@ -1,7 +1,7 @@
 <template>
   <div class="acontainer">
     <div class="acontainer-filters">
-      <Filters :filt="getAdds[0]" />
+      <Filters :reg="loc" />
     </div>
     <div class="acontainer-adds">
       <div class="pagination">
@@ -44,10 +44,7 @@ export default {
     const addLocation = this.loc;
     const newValue = this.PageNumber;
     const path = this.$route.name;
-    const bedrooms = this.$route.query.beds;
-    const bathrooms = this.$route.query.baths;
-
-    this.fetchAdds({ newValue, addLocation, path, bedrooms, bathrooms });
+    this.fetchAdds({ newValue, addLocation, path });
   },
   methods: {
     ...mapActions(["fetchAdds"]),
@@ -55,31 +52,16 @@ export default {
   watch: {
     PageNumber(newValue, oldValue) {
       const addLocation = this.loc;
-      const path = this.$route.name;
-      let bedrooms = parseInt(this.$route.query.beds);
-      let bathrooms = parseInt(this.$route.query.baths);
-
-      if (isNaN(bedrooms)) bedrooms = 0;
-      if (isNaN(bathrooms)) bathrooms = 0;
-
-      this.fetchAdds({ newValue, addLocation, path, bedrooms, bathrooms });
+      this.fetchAdds({ newValue, addLocation });
 
       if (newValue == 1) {
-        this.$router.push({
-          name: "Buy",
-          params: { loc: this.loc },
-          query: { beds: this.getFilters2.beds, baths: this.getFilters2.baths },
-        });
+        this.$router.push({ name: "Buy", params: { loc: this.loc } });
         return;
       }
       this.$router.push({
         name: "Buy",
         params: { loc: this.loc },
-        query: {
-          page: newValue,
-          beds: this.getFilters2.beds,
-          baths: this.getFilters2.baths,
-        },
+        query: { page: newValue },
       });
     },
     "$route.query.page": {
@@ -88,21 +70,6 @@ export default {
         if (this.$route.name != "Buy") return;
         if (newVal == null) newVal = 1;
         this.$store.commit("enterPageNumber", newVal);
-      },
-    },
-    "$route.query": {
-      immediate: true,
-      handler(newVal) {
-        const addLocation = this.$route.params.loc;
-        const newValue = this.PageNumber;
-        const path = this.$route.name;
-        let bedrooms = parseInt(this.$route.query.beds);
-        let bathrooms = parseInt(this.$route.query.baths);
-
-        if (isNaN(bedrooms)) bedrooms = 0;
-        if (isNaN(bathrooms)) bathrooms = 0;
-
-        this.fetchAdds({ newValue, addLocation, path, bedrooms, bathrooms });
       },
     },
   },
