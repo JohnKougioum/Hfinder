@@ -9,7 +9,11 @@
         <span>Περιοχή</span>
       </div>
       <div class="filters-search-items">
-        <input type="text" :value="reg" />
+        <input
+          type="text"
+          id="search-filter-location"
+          :value="$route.params.loc"
+        />
         <div class="filters-search-btn">
           <div class="filters-seach-btn-icon">
             <svg
@@ -31,13 +35,13 @@
         <span>Σκοπός:</span>
       </div>
       <div class="filters-option-items">
-        <div class="filters-option-items-buy">
-          <input type="radio" id="buy-option" name="option" value="buy" />
-          <label for="option">Αγορά</label>
-        </div>
         <div class="filters-option-items-rent">
-          <input type="radio" id="rent-option" name="option" value="rent" />
+          <input type="radio" id="rent-option" name="option" value="0" />
           <label for="option">Ενοικίαση</label>
+        </div>
+        <div class="filters-option-items-buy">
+          <input type="radio" id="buy-option" name="option" value="1" />
+          <label for="option">Αγορά</label>
         </div>
       </div>
     </div>
@@ -79,22 +83,22 @@
       <div class="filters-bedrooms-items">
         <label class="container">
           1 Υπνοδωμάτιο
-          <input type="checkbox" />
+          <input type="checkbox" name="bedsBox" value="1" />
           <span class="checkmark"></span>
         </label>
         <label class="container"
           >2 Υπνοδωμάτια
-          <input type="checkbox" />
+          <input type="checkbox" name="bedsBox" value="2" />
           <span class="checkmark"></span>
         </label>
         <label class="container"
           >3 Υπνοδωμάτια
-          <input type="checkbox" />
+          <input type="checkbox" name="bedsBox" value="3" />
           <span class="checkmark"></span>
         </label>
         <label class="container"
           >4+ Υπνοδωμάτια
-          <input type="checkbox" />
+          <input type="checkbox" name="bedsBox" value="4" />
           <span class="checkmark"></span>
         </label>
       </div>
@@ -106,17 +110,17 @@
       <div class="filters-bathrooms-items">
         <label class="container">
           1 μπάνιο
-          <input type="checkbox" />
+          <input type="checkbox" name="bathsBox" value="1" />
           <span class="checkmark"></span>
         </label>
         <label class="container"
           >2 μπάνια
-          <input type="checkbox" />
+          <input type="checkbox" name="bathsBox" value="2" />
           <span class="checkmark"></span>
         </label>
         <label class="container"
           >3+ μπάνια
-          <input type="checkbox" />
+          <input type="checkbox" name="bathsBox" value="3" />
           <span class="checkmark"></span>
         </label>
       </div>
@@ -125,15 +129,96 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   name: "Filters",
-  props: {
-    reg: String,
+  computed: {
+    ...mapGetters(["getFilters"]),
   },
   methods: {
+    ...mapActions(["fetchAdds"]),
     async handleFilters() {
-      console.log("awe");
+      let SellOrRent = this.getSellRent();
+      let bedsChecked = this.CheckedBeds();
+      let bathsChecked = this.CheckedBaths();
+
+      const filters2 = {
+        beds: bedsChecked[0],
+        baths: bathsChecked[0],
+      };
+
+      this.$store.commit("setFilters2", filters2);
+
+      let bedrooms = bedsChecked[0];
+      let bathrooms = bathsChecked[0];
+
+      let destination = document.getElementById("search-filter-location").value;
+
+      this.$store.commit("setAdds", []);
+
+      const newValue = this.$store.getters.getPageNumber;
+      const addLocation = destination;
+
+      if (SellOrRent == 0)
+        this.$router.push({
+          name: "Rent",
+          params: { loc: destination },
+          query: { beds: bedsChecked, baths: bathsChecked },
+        });
+      if (SellOrRent == 1)
+        this.$router.push({
+          name: "Buy",
+          params: { loc: destination },
+          query: { beds: bedsChecked, baths: bathsChecked },
+        });
+
+      this.$store.commit("setNewLocation", destination);
     },
+    CheckedBeds() {
+      const checkboxes = document.querySelectorAll(
+        'input[name="bedsBox"]:checked'
+      );
+      let values = [];
+      checkboxes.forEach((checkbox) => {
+        values.push(checkbox.value);
+      });
+      return values;
+    },
+    CheckedBaths() {
+      const checkboxes = document.querySelectorAll(
+        'input[name="bathsBox"]:checked'
+      );
+      let values = [];
+      checkboxes.forEach((checkbox) => {
+        values.push(checkbox.value);
+      });
+      return values;
+    },
+    getSellRent() {
+      let SellOrRent;
+      let t = document.getElementsByName("option");
+
+      for (let i = 0; i < t.length; i++) {
+        if (t[i].checked) SellOrRent = i;
+      }
+      return SellOrRent;
+    },
+  },
+  watch: {
+    getFilters() {
+      if (this.getFilters.sellRent == 0)
+        document.getElementById("rent-option").checked = true;
+      if (this.getFilters.sellRent == 1)
+        document.getElementById("buy-option").checked = true;
+    },
+
+    // "$route.query": {
+    //   immediate: true,
+    //   handler(newValue) {
+    //     console.log(newValue);
+    //   },
+    // },
   },
 };
 </script>

@@ -5,6 +5,8 @@ export const store = createStore({
   state: {
     pageNumber: 1,
     adds: [],
+    filters: [],
+    filters2: [],
     editAdd: [],
     location: "",
     rent: 0,
@@ -27,6 +29,8 @@ export const store = createStore({
       state.pageNumber = payload;
     },
     setAdds: (state, adds) => (state.adds = adds),
+    setFilters: (state, filters) => (state.filters = filters),
+    setFilters2: (state, filters2) => (state.filters2 = filters2),
     removeAdd: (state, id) =>
       (state.adds = state.adds.filter((add) => add.id !== id)),
     setEditAdd: (state, editAdd) => (state.editAdd = editAdd),
@@ -41,7 +45,11 @@ export const store = createStore({
       });
       commit("setAdds", response.data);
     },
-    async fetchAdds({ commit }, { newValue, addLocation, path }) {
+    async fetchAdds(
+      { commit },
+      { newValue, addLocation, path, bedrooms, bathrooms }
+    ) {
+      // console.log(newValue, addLocation, path, bedrooms, bathrooms);
       let choice;
 
       if (path == "Buy") choice = 1;
@@ -52,10 +60,18 @@ export const store = createStore({
         {
           params: {
             page: newValue,
+            beds: bedrooms,
+            baths: bathrooms,
           },
         }
       );
       commit("setAdds", response.data);
+      if (response.data[0] == null) {
+        const filt = { location: addLocation, sellRent: choice };
+        commit("setFilters", filt);
+        return;
+      }
+      commit("setFilters", response.data[0]);
     },
     async deleteAdd({ commit }, id) {
       var warn = confirm(
@@ -97,5 +113,8 @@ export const store = createStore({
     getPageNumber: (state) => state.pageNumber,
     getAdds: (state) => state.adds,
     getEditAdd: (state) => state.editAdd,
+    getFilters: (state) => state.filters,
+    getFilters2: (state) => state.filters2,
+    getLocation: (state) => state.location,
   },
 });

@@ -5,7 +5,7 @@
     </div>
     <div class="acontainer-adds-results-card-container-content">
       <h1 class="acontainer-adds-results-card-container-content-price">
-        {{ add.price.toLocaleString("es-ES") }} €
+        {{ add.price.toLocaleString("el-GR") }} €
       </h1>
       <span
         ><img src="../assets/images/bed.svg" alt="" />{{ add.beds }} bd</span

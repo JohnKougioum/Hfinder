@@ -120,10 +120,18 @@
           flex: 1;
 }
 
+.filters-container .filters-option .filters-option-items .filters-option-items-buy label {
+  padding-left: 5px;
+}
+
 .filters-container .filters-option .filters-option-items .filters-option-items-rent {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+
+.filters-container .filters-option .filters-option-items .filters-option-items-rent label {
+  padding-left: 5px;
 }
 
 .filters-container .filters-price {
