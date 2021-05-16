@@ -3,7 +3,7 @@
     <nav>
       <div class="logo">
         <!-- <h4>Hfind</h4> -->
-        <router-link to="/"><img src="../assets/images/HFINDER.png" alt="mpourdelo" style="width:130px"></router-link>
+        <router-link to="/"><img src="../assets/images/HFINDER.svg" alt="hfinderLOGO" style="width:90px"></router-link>
       </div>
       <ul class="nav-links">
         <li>
