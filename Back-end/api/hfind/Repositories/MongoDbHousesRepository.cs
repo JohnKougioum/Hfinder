@@ -11,7 +11,7 @@ namespace hfind.Repositories
     
     public class MongoDbHousesRepository : HHousesRepository
     {
-        private const string databaseName = "hfind";
+        private const string databaseName = "hifind";
         private const string collectionName = "Houses";
         
         private readonly IMongoCollection<House> itemsCollection;
@@ -38,6 +38,7 @@ namespace hfind.Repositories
 
         public async Task<House> GetHouseAsync(Guid id)
         {
+            
             var filter = filterBuilder.Eq(House => House.Id, id);
             return await itemsCollection.Find(filter).SingleOrDefaultAsync();
         }
@@ -100,13 +101,47 @@ namespace hfind.Repositories
                
         //    return await itemsCollection.Find(filter).ToListAsync();
         }
-      public async Task<IEnumerable<House>> GetUserAddsAsync(string User,int page)
+      public async Task<IEnumerable<House>> GetUserAddsAsync(string User, int page,string Location, int SellRent,  double startPrice, double endPrice, int startSm, int endSm, int Beds, int Baths)
         {
             int limit=4;
 
             int skipCount = (page - 1) * limit;
 
             var filter = filterBuilder.Eq(House => House.UserId , User);
+
+            if (Location!=null){
+                filter &= filterBuilder.Eq(House => House.Location, Location);
+            }
+
+            if (SellRent!=3){
+                filter &= filterBuilder.Eq(House => House.SellRent, SellRent);
+            }
+
+            if(Beds!=0){
+                filter &= filterBuilder.Eq(House => House.Beds, Beds);
+            }
+
+            if(Baths!=0){
+                filter &= filterBuilder.Eq(House => House.Baths, Baths);
+            }
+
+            if(endSm!=0){
+                filter &= filterBuilder.Lte(House => House.Sm, endSm);
+            } 
+
+            if(startSm!=0){
+                filter &= filterBuilder.Gte(House => House.Sm, startSm);
+            }
+
+            if(startPrice!=0){
+                filter &= filterBuilder.Gte(House => House.Price, startPrice );
+            }
+
+            if (endPrice!=0){
+                filter &= filterBuilder.Lte(House => House.Price, endPrice);
+            }
+
+
            return await itemsCollection.Find(filter).Skip(skipCount).Limit(limit).ToListAsync();
         }
      public async Task<IEnumerable<House>> GetHouseLocAsync(String Location)
@@ -116,6 +151,22 @@ namespace hfind.Repositories
             //return await HousesCollection.Find(new BsonDocument(),filer).ToListAsync();
         }
 
+        //   public async Task<User> GetUserAsync(Guid UserId)
+        // {
+        //    var filter = filterBuilder.Eq(User => User.UserId, UserId);
+        //     return await itemsCollection.Find(filter).SingleOrDefaultAsync();
+        // }
+
+      
+        // public async Task UpdateUserAsync(User User)
+        // {
+        //    var filter = filterBuilder.Eq(existingUser => existingUser.Id, User.UserId);
+        //     await  itemsCollection.ReplaceOneAsync(filter, User);
+        // }
+        // public async Task CreateUserAsync(User User)
+        // {
+        //    await itemsCollection.InsertOneAsync(User);
+        // }
         public async Task ReportHouseAsync(House House)
         {
              var filter = filterBuilder.Eq(existingHouse => existingHouse.Id, House.Id);
@@ -127,29 +178,6 @@ namespace hfind.Repositories
              var filter = filterBuilder.Eq(House => House.Report , Report);
            return await itemsCollection.Find(filter).ToListAsync();
         }
-
-        // public async Task<House> GetCountHouseAsync()
-        // {
-        //     //  return await itemsCollection.Count;
-        // }
-
-        //   public async Task<User> GetUserAsync(Guid UserId)
-        // {
-        //    var filter = filterBuilder.Eq(User => User.UserId, UserId);
-        //     return await itemsCollection.Find(filter).SingleOrDefaultAsync();
-        // }
-
-
-        // public async Task UpdateUserAsync(User User)
-        // {
-        //    var filter = filterBuilder.Eq(existingUser => existingUser.Id, User.UserId);
-        //     await  itemsCollection.ReplaceOneAsync(filter, User);
-        // }
-        // public async Task CreateUserAsync(User User)
-        // {
-        //    await itemsCollection.InsertOneAsync(User);
-        // }
-
-
+        
     }
 }

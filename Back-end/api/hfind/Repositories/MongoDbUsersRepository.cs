@@ -12,7 +12,7 @@ namespace hfind.Repositories
     public class MongoDbUsersRepository : UUsersRepository
 
     {
-           private const string databaseName = "hfind";
+           private const string databaseName = "hifind";
         private const string collectionName = "Users";
         
         private readonly IMongoCollection<User> itemsCollection;
@@ -26,17 +26,7 @@ namespace hfind.Repositories
             
             
         }
-
-        // public async Task CreateLikeAsync(User.LikeHouse LikeHouse,User User)
-        // {
-        //      var filter = filterBuilder.Eq(existingUser => existingUser.Id, User.Id);
-        //      var helpme = itemsCollection.Find(filter);
-        //      await helpme.new BsonDocument("_Idh", new ObjectId(context.Id) filter;
-           
-            
-        // }
-
-        public async Task CreateUserAsync(User User)
+         public async Task CreateUserAsync(User User)
         {
            await itemsCollection.InsertOneAsync(User);
         }

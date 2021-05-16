@@ -2116,34 +2116,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lurwa\\.nuget\\packages\\": {},
-    "D:\\vs\\sdk\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\johnm\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\api\\hfind\\hfind.csproj",
+      "projectUniqueName": "C:\\Users\\johnm\\Documents\\WebDev\\ΑΟΠΣΕ\\Hfind\\Back-end\\api\\hfind\\hfind.csproj",
       "projectName": "hfind",
-      "projectPath": "D:\\api\\hfind\\hfind.csproj",
-      "packagesPath": "C:\\Users\\Lurwa\\.nuget\\packages\\",
-      "outputPath": "D:\\api\\hfind\\obj\\",
+      "projectPath": "C:\\Users\\johnm\\Documents\\WebDev\\ΑΟΠΣΕ\\Hfind\\Back-end\\api\\hfind\\hfind.csproj",
+      "packagesPath": "C:\\Users\\johnm\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\johnm\\Documents\\WebDev\\ΑΟΠΣΕ\\Hfind\\Back-end\\api\\hfind\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "D:\\vs\\sdk\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Lurwa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\johnm\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

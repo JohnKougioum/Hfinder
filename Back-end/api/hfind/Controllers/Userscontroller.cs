@@ -89,11 +89,11 @@ public class Userscontroller : ControllerBase
 
                 var token = new JwtTokenBuilder()
                                     .AddSecurityKey(JwtSecurityKey.Create("key-value-token-expires"))
-                                    .AddSubject(User.Id)
+                                    .AddSubject(Convert.ToString(User.Username))
                                     .AddIssuer("issuerTest")
                                     .AddAudience("bearerTest")
                                     .AddClaim("MembershipId", "111")
-                                    .AddExpiry(5000)
+                                    .AddExpiry(1)
                                     .Build();
 
                 return Ok(token.Value);
@@ -102,5 +102,4 @@ public class Userscontroller : ControllerBase
                 return Unauthorized();
         }
     }
-    
   }

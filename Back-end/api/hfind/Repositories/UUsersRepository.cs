@@ -14,7 +14,6 @@ namespace hfind.Repositories
         Task UpdateUserAsync(User user);
        Task CreateUserAsync(User User);
        Task LoginUserAsync(string Username ,string Password);
-      //  Task CreateLikeAsync(User.LikeHouse LikeHouse,User User);
        
     }
 }

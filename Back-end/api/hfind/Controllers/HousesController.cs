@@ -103,15 +103,22 @@ public class HousesController : ControllerBase
 
     }
    
-    [HttpGet("/SellRent/{Location}")]
+    [HttpGet("/{SellRent}/{Location}")]
   
-   public async Task<IEnumerable<HouseDto>> GetSellRentLocationAsync(string Location, int SellRent)
+   public async Task<IEnumerable<HouseDto>> GetSellRentLocationAsync(string Location, int SellRent, int page, double startPrice, double endPrice, int startSm, int endSm, int Beds, int Baths)
    {
-     var houses = (await repository.GetSellRentLocationAsync(Location,SellRent))
+     var houses = (await repository.GetSellRentLocationAsync(Location,SellRent,page,startPrice,endPrice,startSm,endSm,Beds,Baths))
                  .Select(House => House.AsDto());
      return houses;
    }
-   [HttpPut("report/{id}")]
+   [HttpGet("/UserHouses/{User}")]
+    public async Task<IEnumerable<HouseDto>> GetUserAddsAsync(string User, int page,string Location, int SellRent,  double startPrice, double endPrice, int startSm, int endSm, int Beds, int Baths)
+    {
+     var houses = (await repository.GetUserAddsAsync(User,page,Location, SellRent, startPrice, endPrice, startSm,  endSm,  Beds,  Baths))
+                 .Select(House => House.AsDto());
+     return houses;
+    }
+    [HttpPut("report/{id}")]
     public async Task<ActionResult> ReportHouseAsync(Guid id,ReportHouseDto HouseDto){
       var existingHouse = await repository.GetHouseAsync(id);
       if (existingHouse is null)
@@ -132,8 +139,9 @@ public class HousesController : ControllerBase
      var houses = (await repository.GetHouseReportAsync(report))
                  .Select(House => House.AsDto());
      return houses;
+    }
    }
-  }
+  
 
 }
 
