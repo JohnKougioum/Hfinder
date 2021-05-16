@@ -13,15 +13,20 @@ import Covid19 from "../views/Covid19";
 import Favourites from "../views/Favourites";
 import Selectedlisting from "../components/Selectedlisting";
 import PageNotFound from "../components/PageNotFound";
-import Contact from '../components/Contact'
 import AuthFunction from "../auth";
-
+import Admindashboard from "../components/Admindashboard";
+import Contact from '../components/Contact'
 const routes = [
   {
     path: "/buy/:loc",
     name: "Buy",
     component: Buy,
     props: true,
+  },
+  {
+    path: '/Contact',
+    name: 'Contact',
+    component: Contact
   },
   {
     path: "/Rent/:loc",
@@ -92,14 +97,14 @@ const routes = [
     props: true,
   },
   {
-    path: '/Contact',
-    name: 'Contact',
-    component: Contact
-  },
-  {
     path: "/:catchAll(.*)",
     name: "PageNotFound",
     component: PageNotFound,
+  },
+  {
+    path: "/Admindashboard",
+    name: "Admindashboard",
+    component: Admindashboard,
   },
 ];
 

@@ -46,8 +46,18 @@ export default {
     const path = this.$route.name;
     const bedrooms = this.$route.query.beds;
     const bathrooms = this.$route.query.baths;
+    let startPrice = this.$route.query.startPrice;
+    let endPrice = this.$route.query.endPrice;
 
-    this.fetchAdds({ newValue, addLocation, path, bedrooms, bathrooms });
+    this.fetchAdds({
+      newValue,
+      addLocation,
+      path,
+      bedrooms,
+      bathrooms,
+      startPrice,
+      endPrice,
+    });
   },
   methods: {
     ...mapActions(["fetchAdds"]),
@@ -56,19 +66,36 @@ export default {
     PageNumber(newValue, oldValue) {
       const addLocation = this.loc;
       const path = this.$route.name;
+
       let bedrooms = parseInt(this.$route.query.beds);
       let bathrooms = parseInt(this.$route.query.baths);
-
+      let startPrice = parseInt(this.$route.query.startPrice);
+      let endPrice = parseInt(this.$route.query.endPrice);
       if (isNaN(bedrooms)) bedrooms = 0;
       if (isNaN(bathrooms)) bathrooms = 0;
+      if (isNaN(startPrice)) bathrooms = 0;
+      if (isNaN(endPrice)) bathrooms = 0;
 
-      this.fetchAdds({ newValue, addLocation, path, bedrooms, bathrooms });
+      this.fetchAdds({
+        newValue,
+        addLocation,
+        path,
+        bedrooms,
+        bathrooms,
+        startPrice,
+        endPrice,
+      });
 
       if (newValue == 1) {
         this.$router.push({
           name: "Buy",
           params: { loc: this.loc },
-          query: { beds: this.getFilters2.beds, baths: this.getFilters2.baths },
+          query: {
+            beds: this.getFilters2.beds,
+            baths: this.getFilters2.baths,
+            startPrice: this.getFilters2.startPrice,
+            endPrice: this.getFilters2.endPrice,
+          },
         });
         return;
       }
@@ -79,6 +106,8 @@ export default {
           page: newValue,
           beds: this.getFilters2.beds,
           baths: this.getFilters2.baths,
+          startPrice: this.getFilters2.startPrice,
+          endPrice: this.getFilters2.endPrice,
         },
       });
     },
@@ -93,16 +122,30 @@ export default {
     "$route.query": {
       immediate: true,
       handler(newVal) {
-        const addLocation = this.$route.params.loc;
-        const newValue = this.PageNumber;
         const path = this.$route.name;
-        let bedrooms = parseInt(this.$route.query.beds);
-        let bathrooms = parseInt(this.$route.query.baths);
+        if (path == "Buy") {
+          const addLocation = this.$route.params.loc;
+          const newValue = this.PageNumber;
+          let bedrooms = parseInt(this.$route.query.beds);
+          let bathrooms = parseInt(this.$route.query.baths);
+          let startPrice = parseInt(this.$route.query.startPrice);
+          let endPrice = parseInt(this.$route.query.endPrice);
 
-        if (isNaN(bedrooms)) bedrooms = 0;
-        if (isNaN(bathrooms)) bathrooms = 0;
+          if (isNaN(bedrooms)) bedrooms = 0;
+          if (isNaN(bathrooms)) bathrooms = 0;
+          if (isNaN(startPrice)) startPrice = 0;
+          if (isNaN(endPrice)) endPrice = 0;
 
-        this.fetchAdds({ newValue, addLocation, path, bedrooms, bathrooms });
+          this.fetchAdds({
+            newValue,
+            addLocation,
+            path,
+            bedrooms,
+            bathrooms,
+            startPrice,
+            endPrice,
+          });
+        }
       },
     },
   },

@@ -50,8 +50,27 @@ export default {
     const path = this.$route.name;
     const bedrooms = this.$route.query.beds;
     const bathrooms = this.$route.query.baths;
+    let startPrice = parseInt(this.$route.query.startPrice);
+    let endPrice = parseInt(this.$route.query.endPrice);
+    let startSm = parseInt(this.$route.query.startSm);
+    let endSm = parseInt(this.$route.query.endSm);
 
-    this.fetchAdds({ newValue, addLocation, path, bedrooms, bathrooms });
+    if (isNaN(startPrice)) startPrice = 0;
+    if (isNaN(endPrice)) endPrice = 0;
+    if (isNaN(startSm)) startSm = 0;
+    if (isNaN(endSm)) endSm = 0;
+
+    this.fetchAdds({
+      newValue,
+      addLocation,
+      path,
+      bedrooms,
+      bathrooms,
+      startPrice,
+      endPrice,
+      startSm,
+      endSm,
+    });
   },
   methods: {
     ...mapActions(["fetchAdds"]),
@@ -63,17 +82,42 @@ export default {
 
       let bedrooms = parseInt(this.$route.query.beds);
       let bathrooms = parseInt(this.$route.query.baths);
+      let startPrice = parseInt(this.$route.query.startPrice);
+      let endPrice = parseInt(this.$route.query.endPrice);
+      let startSm = parseInt(this.$route.query.startSm);
+      let endSm = parseInt(this.$route.query.endSm);
 
       if (isNaN(bedrooms)) bedrooms = 0;
       if (isNaN(bathrooms)) bathrooms = 0;
+      if (isNaN(startPrice)) startPrice = 0;
+      if (isNaN(endPrice)) endPrice = 0;
+      if (isNaN(startSm)) startSm = 0;
+      if (isNaN(endSm)) endSm = 0;
 
-      this.fetchAdds({ newValue, addLocation, path, bedrooms, bathrooms });
+      this.fetchAdds({
+        newValue,
+        addLocation,
+        path,
+        bedrooms,
+        bathrooms,
+        startPrice,
+        endPrice,
+        startSm,
+        endSm,
+      });
 
       if (newValue == 1) {
         this.$router.push({
           name: "Rent",
           params: { loc: this.loc },
-          query: { beds: this.getFilters2.beds, baths: this.getFilters2.baths },
+          query: {
+            beds: this.getFilters2.beds,
+            baths: this.getFilters2.baths,
+            startPrice: this.getFilters2.startPrice,
+            endPrice: this.getFilters2.endPrice,
+            startSm: this.getFilters2.startSm,
+            endSm: this.getFilters2.endSm,
+          },
         });
         return;
       }
@@ -84,6 +128,10 @@ export default {
           page: newValue,
           beds: this.getFilters2.beds,
           baths: this.getFilters2.baths,
+          startPrice: this.getFilters2.startPrice,
+          endPrice: this.getFilters2.endPrice,
+          startSm: this.getFilters2.startSm,
+          endSm: this.getFilters2.endSm,
         },
       });
     },
@@ -98,16 +146,34 @@ export default {
     "$route.query": {
       immediate: true,
       handler(newVal) {
+        const path = this.$route.name;
         const addLocation = this.$route.params.loc;
         const newValue = this.PageNumber;
-        const path = this.$route.name;
         let bedrooms = parseInt(this.$route.query.beds);
         let bathrooms = parseInt(this.$route.query.baths);
+        let startPrice = parseInt(this.$route.query.startPrice);
+        let endPrice = parseInt(this.$route.query.endPrice);
+        let startSm = parseInt(this.$route.query.startSm);
+        let endSm = parseInt(this.$route.query.endSm);
 
         if (isNaN(bedrooms)) bedrooms = 0;
         if (isNaN(bathrooms)) bathrooms = 0;
+        if (isNaN(startPrice)) startPrice = 0;
+        if (isNaN(endPrice)) endPrice = 0;
+        if (isNaN(startSm)) startSm = 0;
+        if (isNaN(endSm)) endSm = 0;
 
-        this.fetchAdds({ newValue, addLocation, path, bedrooms, bathrooms });
+        this.fetchAdds({
+          newValue,
+          addLocation,
+          path,
+          bedrooms,
+          bathrooms,
+          startPrice,
+          endPrice,
+          startSm,
+          endSm,
+        });
       },
     },
   },

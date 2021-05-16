@@ -12,6 +12,7 @@ export const store = createStore({
     location: "",
     rent: 0,
     buy: 1,
+    img: "",
   },
   mutations: {
     prevPage(state) {
@@ -37,6 +38,7 @@ export const store = createStore({
     setEditAdd: (state, editAdd) => (state.editAdd = editAdd),
     setNewLocation: (state, location) => (state.location = location),
     setReportedAdd: (state, reportedAdd) => (state.reportedAdds = reportedAdd),
+    setImg: (state, img) => (state.img = img),
   },
   actions: {
     async fetchOwnAdds(
@@ -185,5 +187,6 @@ export const store = createStore({
     getFilters2: (state) => state.filters2,
     getLocation: (state) => state.location,
     getReportedAdds: (state) => state.reportedAdds,
+    getImg: (state) => state.img,
   },
 });

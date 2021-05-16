@@ -143,35 +143,327 @@ export default {
       let bedsChecked = this.CheckedBeds();
       let bathsChecked = this.CheckedBaths();
 
-      const filters2 = {
-        beds: bedsChecked[0],
-        baths: bathsChecked[0],
-      };
-
-      this.$store.commit("setFilters2", filters2);
-
       let bedrooms = bedsChecked[0];
       let bathrooms = bathsChecked[0];
 
       let destination = document.getElementById("search-filter-location").value;
+      let startPrice = document.getElementById("startPrice").value;
+      let endPrice = document.getElementById("endPrice").value;
+      let startSm = document.getElementById("startSpace").value;
+      let endSm = document.getElementById("endSpace").value;
+
+      const filters2 = {
+        beds: bedsChecked[0],
+        baths: bathsChecked[0],
+        startPrice: startPrice,
+        endPrice: endPrice,
+        startSm: startSm,
+        endSm: endSm,
+      };
+
+      this.$store.commit("setFilters2", filters2);
+
+      if (this.$route.name == "Dashboard") {
+        this.applyFilters(
+          destination,
+          SellOrRent,
+          startPrice,
+          endPrice,
+          startSm,
+          endSm,
+          bedsChecked,
+          bathsChecked
+        );
+        return;
+      }
+
+      if (SellOrRent == 0) {
+        if (
+          startPrice == "" &&
+          endPrice == "" &&
+          startSm == "" &&
+          endSm == ""
+        ) {
+          this.$router.push({
+            name: "Rent",
+            params: { loc: destination },
+            query: {
+              beds: bedsChecked,
+              baths: bathsChecked,
+            },
+          });
+        }
+        if (
+          startPrice == "" &&
+          endPrice == "" &&
+          startSm != "" &&
+          endSm == ""
+        ) {
+          this.$router.push({
+            name: "Rent",
+            params: { loc: destination },
+            query: {
+              beds: bedsChecked,
+              baths: bathsChecked,
+              startSm: startSm,
+            },
+          });
+        }
+        if (
+          startPrice == "" &&
+          endPrice == "" &&
+          startSm == "" &&
+          endSm != ""
+        ) {
+          this.$router.push({
+            name: "Rent",
+            params: { loc: destination },
+            query: {
+              beds: bedsChecked,
+              baths: bathsChecked,
+              endSm: endSm,
+            },
+          });
+        }
+        if (
+          startPrice == "" &&
+          endPrice == "" &&
+          startSm != "" &&
+          endSm != ""
+        ) {
+          this.$router.push({
+            name: "Rent",
+            params: { loc: destination },
+            query: {
+              beds: bedsChecked,
+              baths: bathsChecked,
+              startSm: startSm,
+              endSm: endSm,
+            },
+          });
+        }
+        if (
+          startPrice == "" &&
+          endPrice != "" &&
+          startSm == "" &&
+          endSm == ""
+        ) {
+          this.$router.push({
+            name: "Rent",
+            params: { loc: destination },
+            query: {
+              beds: bedsChecked,
+              baths: bathsChecked,
+              endPrice: endPrice,
+            },
+          });
+        }
+        if (
+          startPrice == "" &&
+          endPrice != "" &&
+          startSm != "" &&
+          endSm == ""
+        ) {
+          this.$router.push({
+            name: "Rent",
+            params: { loc: destination },
+            query: {
+              beds: bedsChecked,
+              baths: bathsChecked,
+              endPrice: endPrice,
+              startSm: startSm,
+            },
+          });
+        }
+        if (
+          startPrice == "" &&
+          endPrice != "" &&
+          startSm == "" &&
+          endSm != ""
+        ) {
+          this.$router.push({
+            name: "Rent",
+            params: { loc: destination },
+            query: {
+              beds: bedsChecked,
+              baths: bathsChecked,
+              endPrice: endPrice,
+              endSm: endSm,
+            },
+          });
+        }
+        if (
+          startPrice != "" &&
+          endPrice == "" &&
+          startSm == "" &&
+          endSm == ""
+        ) {
+          this.$router.push({
+            name: "Rent",
+            params: { loc: destination },
+            query: {
+              beds: bedsChecked,
+              baths: bathsChecked,
+              startPrice: startPrice,
+            },
+          });
+        }
+        if (
+          startPrice != "" &&
+          endPrice == "" &&
+          startSm != "" &&
+          endSm == ""
+        ) {
+          this.$router.push({
+            name: "Rent",
+            params: { loc: destination },
+            query: {
+              beds: bedsChecked,
+              baths: bathsChecked,
+              startPrice: startPrice,
+              startSm: startSm,
+            },
+          });
+        }
+        if (
+          startPrice != "" &&
+          endPrice == "" &&
+          startSm == "" &&
+          endSm != ""
+        ) {
+          this.$router.push({
+            name: "Rent",
+            params: { loc: destination },
+            query: {
+              beds: bedsChecked,
+              baths: bathsChecked,
+              startPrice: startPrice,
+              endSm: endSm,
+            },
+          });
+        }
+
+        if (
+          startPrice != "" &&
+          endPrice != "" &&
+          startSm == "" &&
+          endSm == ""
+        ) {
+          this.$router.push({
+            name: "Rent",
+            params: { loc: destination },
+            query: {
+              beds: bedsChecked,
+              baths: bathsChecked,
+              startPrice: startPrice,
+              endPrice: endPrice,
+            },
+          });
+        }
+        if (
+          startPrice != "" &&
+          endPrice != "" &&
+          startSm != "" &&
+          endSm == ""
+        ) {
+          this.$router.push({
+            name: "Rent",
+            params: { loc: destination },
+            query: {
+              beds: bedsChecked,
+              baths: bathsChecked,
+              startPrice: startPrice,
+              endPrice: endPrice,
+              startSm: startSm,
+            },
+          });
+        }
+        if (
+          startPrice != "" &&
+          endPrice != "" &&
+          startSm == "" &&
+          endSm != ""
+        ) {
+          this.$router.push({
+            name: "Rent",
+            params: { loc: destination },
+            query: {
+              beds: bedsChecked,
+              baths: bathsChecked,
+              startPrice: startPrice,
+              endPrice: endPrice,
+              endSm: endSm,
+            },
+          });
+        }
+        if (
+          startPrice != "" &&
+          endPrice != "" &&
+          startSm != "" &&
+          endSm != ""
+        ) {
+          this.$router.push({
+            name: "Rent",
+            params: { loc: destination },
+            query: {
+              beds: bedsChecked,
+              baths: bathsChecked,
+              startPrice: startPrice,
+              endPrice: endPrice,
+              startSm: startSm,
+              endSm: endSm,
+            },
+          });
+        }
+      }
+      if (SellOrRent == 1) {
+        if (startPrice == "" && endPrice == "") {
+          this.$router.push({
+            name: "Buy",
+            params: { loc: destination },
+            query: {
+              beds: bedsChecked,
+              baths: bathsChecked,
+            },
+          });
+        }
+        if ((startPrice == "") & (endPrice != "")) {
+          this.$router.push({
+            name: "Buy",
+            params: { loc: destination },
+            query: {
+              beds: bedsChecked,
+              baths: bathsChecked,
+              endPrice: endPrice,
+            },
+          });
+        }
+        if (startPrice != "" && endPrice == "") {
+          this.$router.push({
+            name: "Buy",
+            params: { loc: destination },
+            query: {
+              beds: bedsChecked,
+              baths: bathsChecked,
+              startPrice: startPrice,
+            },
+          });
+        }
+        if (startPrice != "" && endPrice != "") {
+          this.$router.push({
+            name: "Buy",
+            params: { loc: destination },
+            query: {
+              beds: bedsChecked,
+              baths: bathsChecked,
+              startPrice: startPrice,
+              endPrice: endPrice,
+            },
+          });
+        }
+      }
 
       this.$store.commit("setAdds", []);
-
-      const newValue = this.$store.getters.getPageNumber;
-      const addLocation = destination;
-
-      if (SellOrRent == 0)
-        this.$router.push({
-          name: "Rent",
-          params: { loc: destination },
-          query: { beds: bedsChecked, baths: bathsChecked },
-        });
-      if (SellOrRent == 1)
-        this.$router.push({
-          name: "Buy",
-          params: { loc: destination },
-          query: { beds: bedsChecked, baths: bathsChecked },
-        });
 
       this.$store.commit("setNewLocation", destination);
     },
@@ -204,6 +496,1068 @@ export default {
       }
       return SellOrRent;
     },
+    applyFilters(
+      destination,
+      SellOrRent,
+      startPrice,
+      endPrice,
+      startSm,
+      endSm,
+      bedsChecked,
+      bathsChecked
+    ) {
+      if (
+        destination == "" &&
+        SellOrRent == "" &&
+        startPrice == "" &&
+        endPrice == "" &&
+        startSm == "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent == "" &&
+        startPrice == "" &&
+        endPrice == "" &&
+        startSm == "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent != "" &&
+        startPrice == "" &&
+        endPrice == "" &&
+        startSm == "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent != "" &&
+        startPrice == "" &&
+        endPrice == "" &&
+        startSm == "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent == "" &&
+        startPrice == "" &&
+        endPrice == "" &&
+        startSm != "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startSm: startSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent == "" &&
+        startPrice == "" &&
+        endPrice == "" &&
+        startSm != "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startSm: startSm,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent != "" &&
+        startPrice == "" &&
+        endPrice == "" &&
+        startSm != "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startSm: startSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent != "" &&
+        startPrice == "" &&
+        endPrice == "" &&
+        startSm != "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startSm: startSm,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent == "" &&
+        startPrice == "" &&
+        endPrice == "" &&
+        startSm == "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            beds: bedsChecked,
+            baths: bathsChecked,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent == "" &&
+        startPrice == "" &&
+        endPrice == "" &&
+        startSm == "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent != "" &&
+        startPrice == "" &&
+        endPrice == "" &&
+        startSm == "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent != "" &&
+        startPrice == "" &&
+        endPrice == "" &&
+        startSm == "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent == "" &&
+        startPrice == "" &&
+        endPrice == "" &&
+        startSm != "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startSm: startSm,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent == "" &&
+        startPrice == "" &&
+        endPrice == "" &&
+        startSm != "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startSm: startSm,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent != "" &&
+        startPrice == "" &&
+        endPrice == "" &&
+        startSm != "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startSm: startSm,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent != "" &&
+        startPrice == "" &&
+        endPrice == "" &&
+        startSm != "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startSm: startSm,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent == "" &&
+        startPrice == "" &&
+        endPrice != "" &&
+        startSm == "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            beds: bedsChecked,
+            baths: bathsChecked,
+            endPrice: endPrice,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent == "" &&
+        startPrice == "" &&
+        endPrice != "" &&
+        startSm == "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            endPrice: endPrice,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent != "" &&
+        startPrice == "" &&
+        endPrice != "" &&
+        startSm == "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            endPrice: endPrice,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent != "" &&
+        startPrice == "" &&
+        endPrice != "" &&
+        startSm == "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            endPrice: endPrice,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent == "" &&
+        startPrice == "" &&
+        endPrice != "" &&
+        startSm != "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            beds: bedsChecked,
+            baths: bathsChecked,
+            endPrice: endPrice,
+            startSm: startSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent == "" &&
+        startPrice == "" &&
+        endPrice != "" &&
+        startSm != "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            endPrice: endPrice,
+            startSm: startSm,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent != "" &&
+        startPrice == "" &&
+        endPrice != "" &&
+        startSm != "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            endPrice: endPrice,
+            startSm: startSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent != "" &&
+        startPrice == "" &&
+        endPrice != "" &&
+        startSm != "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            endPrice: endPrice,
+            startSm: startSm,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent == "" &&
+        startPrice == "" &&
+        endPrice != "" &&
+        startSm == "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            beds: bedsChecked,
+            baths: bathsChecked,
+            endPrice: endPrice,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent == "" &&
+        startPrice == "" &&
+        endPrice != "" &&
+        startSm == "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            endPrice: endPrice,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent != "" &&
+        startPrice == "" &&
+        endPrice != "" &&
+        startSm == "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            endPrice: endPrice,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent != "" &&
+        startPrice == "" &&
+        endPrice != "" &&
+        startSm == "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            endPrice: endPrice,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent == "" &&
+        startPrice != "" &&
+        endPrice == "" &&
+        startSm == "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent == "" &&
+        startPrice != "" &&
+        endPrice == "" &&
+        startSm == "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent != "" &&
+        startPrice != "" &&
+        endPrice == "" &&
+        startSm == "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent != "" &&
+        startPrice != "" &&
+        endPrice == "" &&
+        startSm == "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent == "" &&
+        startPrice != "" &&
+        endPrice == "" &&
+        startSm != "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            startSm: startSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent == "" &&
+        startPrice != "" &&
+        endPrice == "" &&
+        startSm != "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            startSm: startSm,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent != "" &&
+        startPrice != "" &&
+        endPrice == "" &&
+        startSm != "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            startSm: startSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent != "" &&
+        startPrice != "" &&
+        endPrice == "" &&
+        startSm != "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            startSm: startSm,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent == "" &&
+        startPrice != "" &&
+        endPrice == "" &&
+        startSm == "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent == "" &&
+        startPrice != "" &&
+        endPrice == "" &&
+        startSm == "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent == "" &&
+        startPrice != "" &&
+        endPrice == "" &&
+        startSm == "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent == "" &&
+        startPrice != "" &&
+        endPrice == "" &&
+        startSm == "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endSm: endSm,
+          },
+        });
+      }
+
+      if (
+        destination == "" &&
+        SellOrRent == "" &&
+        startPrice != "" &&
+        endPrice != "" &&
+        startSm == "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endPrice: endPrice,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent == "" &&
+        startPrice != "" &&
+        endPrice != "" &&
+        startSm == "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endPrice: endPrice,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent != "" &&
+        startPrice != "" &&
+        endPrice != "" &&
+        startSm == "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endPrice: endPrice,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent != "" &&
+        startPrice != "" &&
+        endPrice != "" &&
+        startSm == "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endPrice: endPrice,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent == "" &&
+        startPrice != "" &&
+        endPrice != "" &&
+        startSm != "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endPrice: endPrice,
+            startSm: startSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent == "" &&
+        startPrice != "" &&
+        endPrice != "" &&
+        startSm != "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endPrice: endPrice,
+            startSm: startSm,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent != "" &&
+        startPrice != "" &&
+        endPrice != "" &&
+        startSm != "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endPrice: endPrice,
+            startSm: startSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent != "" &&
+        startPrice != "" &&
+        endPrice != "" &&
+        startSm != "" &&
+        endSm == ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endPrice: endPrice,
+            startSm: startSm,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent == "" &&
+        startPrice != "" &&
+        endPrice != "" &&
+        startSm == "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endPrice: endPrice,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent == "" &&
+        startPrice != "" &&
+        endPrice != "" &&
+        startSm == "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endPrice: endPrice,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent != "" &&
+        startPrice != "" &&
+        endPrice != "" &&
+        startSm == "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endPrice: endPrice,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent != "" &&
+        startPrice != "" &&
+        endPrice != "" &&
+        startSm == "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endPrice: endPrice,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent == "" &&
+        startPrice != "" &&
+        endPrice != "" &&
+        startSm != "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endPrice: endPrice,
+            startSm: startSm,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent == "" &&
+        startPrice != "" &&
+        endPrice != "" &&
+        startSm != "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endPrice: endPrice,
+            startSm: startSm,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination == "" &&
+        SellOrRent != "" &&
+        startPrice != "" &&
+        endPrice != "" &&
+        startSm != "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endPrice: endPrice,
+            startSm: startSm,
+            endSm: endSm,
+          },
+        });
+      }
+      if (
+        destination != "" &&
+        SellOrRent != "" &&
+        startPrice != "" &&
+        endPrice != "" &&
+        startSm != "" &&
+        endSm != ""
+      ) {
+        this.$router.push({
+          name: "Dashboard",
+          query: {
+            location: destination,
+            sellrent: SellOrRent,
+            beds: bedsChecked,
+            baths: bathsChecked,
+            startPrice: startPrice,
+            endPrice: endPrice,
+            startSm: startSm,
+            endSm: endSm,
+          },
+        });
+      }
+    },
   },
   watch: {
     getFilters() {
@@ -212,13 +1566,6 @@ export default {
       if (this.getFilters.sellRent == 1)
         document.getElementById("buy-option").checked = true;
     },
-
-    // "$route.query": {
-    //   immediate: true,
-    //   handler(newValue) {
-    //     console.log(newValue);
-    //   },
-    // },
   },
 };
 </script>
