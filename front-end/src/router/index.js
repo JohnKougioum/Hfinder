@@ -15,8 +15,6 @@ import Selectedlisting from "../components/Selectedlisting";
 import PageNotFound from "../components/PageNotFound";
 import Contact from '../components/Contact'
 import AuthFunction from "../auth";
-import Admindashboard from "../components/Admindashboard";
-
 
 const routes = [
   {
@@ -103,11 +101,6 @@ const routes = [
     name: "PageNotFound",
     component: PageNotFound,
   },
-  {
-    path: "/Admindashboard",
-    name: "Admindashboard",
-    component: Admindashboard
-  }
 ];
 
 const router = createRouter({
