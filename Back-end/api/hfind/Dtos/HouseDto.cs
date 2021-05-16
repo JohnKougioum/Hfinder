@@ -8,7 +8,7 @@ namespace hfind.Dtos
 
     public Guid Id { get; init; }
     public int SellRent { get; init; }
-    public decimal Price { get; init; }
+    public double Price { get; init; }
     public String Location { get; init; }
        public string Address { get; init; }
         public int Floor {get; init;}

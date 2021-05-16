@@ -1,7 +1,7 @@
 <template>
   <div class="acontainer">
     <div class="acontainer-filters">
-      <Filters :filt="getAdds[0]" />
+      <Filters />
     </div>
     <div class="acontainer-adds">
       <div class="pagination">
@@ -22,7 +22,7 @@ import axios from "axios";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
-  name: "Buy",
+  name: "Rent",
   components: {
     Adds,
     Pagination,
@@ -32,6 +32,9 @@ export default {
     loc: {
       type: String,
     },
+    asd: {
+      type: String,
+    },
   },
   mounted() {},
   computed: {
@@ -39,6 +42,7 @@ export default {
       return this.$store.getters.getPageNumber;
     },
     ...mapGetters(["getAdds"]),
+    ...mapGetters(["getFilters2"]),
   },
   created() {
     const addLocation = this.loc;
@@ -56,6 +60,7 @@ export default {
     PageNumber(newValue, oldValue) {
       const addLocation = this.loc;
       const path = this.$route.name;
+
       let bedrooms = parseInt(this.$route.query.beds);
       let bathrooms = parseInt(this.$route.query.baths);
 
@@ -66,14 +71,14 @@ export default {
 
       if (newValue == 1) {
         this.$router.push({
-          name: "Buy",
+          name: "Rent",
           params: { loc: this.loc },
           query: { beds: this.getFilters2.beds, baths: this.getFilters2.baths },
         });
         return;
       }
       this.$router.push({
-        name: "Buy",
+        name: "Rent",
         params: { loc: this.loc },
         query: {
           page: newValue,
@@ -85,7 +90,7 @@ export default {
     "$route.query.page": {
       immediate: true,
       handler(newVal) {
-        if (this.$route.name != "Buy") return;
+        if (this.$route.name != "Rent") return;
         if (newVal == null) newVal = 1;
         this.$store.commit("enterPageNumber", newVal);
       },

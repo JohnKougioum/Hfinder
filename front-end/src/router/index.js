@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Index from "../views/Index";
 import Buy from "../views/Buy";
+import Rent from "../views/Rent";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import Newlisting from "../components/Newlisting";
@@ -19,6 +20,12 @@ const routes = [
     path: "/buy/:loc",
     name: "Buy",
     component: Buy,
+    props: true,
+  },
+  {
+    path: "/Rent/:loc",
+    name: "Rent",
+    component: Rent,
     props: true,
   },
   {
@@ -42,9 +49,9 @@ const routes = [
     component: Newlisting,
     beforeEnter: (to, from, next) => {
       if (!AuthFunction.isAuthenticated())
-        next((window.location.href = 'http://localhost:8080/Login'));
+        next((window.location.href = "http://localhost:8080/Login"));
       next();
-    }
+    },
   },
   {
     path: "/Editprofile",

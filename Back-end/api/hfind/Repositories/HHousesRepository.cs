@@ -12,7 +12,8 @@ namespace hfind.Repositories
        Task<House> GetHouseAsync(Guid id);
         Task<IEnumerable<House>> GetHouseAsync(int page);
 
-       Task<IEnumerable<House>> GetSellRentLocationAsync(string Location, int SellRent);
+       Task<IEnumerable<House>> GetSellRentLocationAsync(string Location, int SellRent, int page,double startPrice, double endPrice, int startSm, int endSm, int Beds, int Baths);
+       Task<IEnumerable<House>> GetUserAddsAsync(string User,int page);
        //   Task<House> GetRentAsync(int SellRent);
         Task CreateHouseAsync(House house);
         Task UpdateHouseAsync(House house);

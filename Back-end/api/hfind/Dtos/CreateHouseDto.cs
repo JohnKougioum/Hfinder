@@ -18,7 +18,7 @@ namespace hfind.Dtos
         public int HeatingType {get; init;}
         public string Description {get; init;}
     [Required]
-    public decimal Price { get; init;}
+    public double Price { get; init;}
 
     }
 }

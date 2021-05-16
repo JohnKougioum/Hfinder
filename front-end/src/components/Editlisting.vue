@@ -111,9 +111,8 @@ export default {
   methods: {
     ...mapActions(["pushEditAdd"]),
     async pushEdit() {
-      var status;
+      let status;
       let t = document.getElementsByName("sell-rent");
-      var revert;
 
       for (let i = 0; i < t.length; i++) {
         if (t[i].checked) status = i;
@@ -134,6 +133,7 @@ export default {
       };
       const eid = this.id;
       this.pushEditAdd({ changes, eid });
+      this.$router.push({ name: "Dashboard" });
     },
   },
   watch: {

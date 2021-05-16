@@ -1,5 +1,5 @@
 <template>
-<!--  <div class="acontainer">
+  <!--  <div class="acontainer">
     <div class="acontainer-filters"></div> 
     <div class="acontainer-adds">
       <h1>Αγαπημένα </h1>
@@ -25,13 +25,11 @@
             </div>
           </div>
       <Adds :adds="adds" />
-
       <Pagination :totalItems="5" />
-
     </div>
   </div> -->
 
-   <div class="acontainer">
+  <div class="acontainer">
     <div class="acontainer-filters">
       <Filters :reg="loc" />
     </div>
@@ -51,13 +49,12 @@ import Adds from "../components/FavAdds";
 import Pagination from "../components/Pagination";
 import Filters from "../components/Filters";
 import { mapActions, mapGetters } from "vuex";
-
 export default {
   name: "Favourites",
   components: {
     Adds,
     Pagination,
-    Filters
+    Filters,
   },
   // data() {
   //   return {
@@ -81,7 +78,6 @@ export default {
     PageNumber(newValue, oldValue) {
       const addLocation = this.loc;
       this.fetchAdds({ newValue, addLocation });
-
       if (newValue == 1) {
         this.$router.push({ name: "Favourites", params: { loc: this.loc } });
         return;
@@ -106,8 +102,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/css/adds/adds.css";
-
-
 .hero-section_area-search {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -115,7 +109,6 @@ export default {
   margin-top: 0%;
   margin-left: 55%;
 }
-
 .hero-section_area-search #search_input {
   width: 50%;
   height: 30px;
@@ -123,13 +116,12 @@ export default {
   border: solid black;
   outline: none;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 20px;
   font-size: 16px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-
 .hero-section_area-search .hero-section_area-search_btn {
   width: 10%;
   background-color: grey;
@@ -140,26 +132,27 @@ export default {
   cursor: pointer;
   border: black solid;
 }
-
-.hero-section_area-search .hero-section_area-search_btn .hero-section_area-search_btn-img {
+.hero-section_area-search
+  .hero-section_area-search_btn
+  .hero-section_area-search_btn-img {
   width: 50%;
   position: relative;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
-
-.hero-section_area-search .hero-section_area-search_btn .hero-section_area-search_btn-img svg {
+.hero-section_area-search
+  .hero-section_area-search_btn
+  .hero-section_area-search_btn-img
+  svg {
   width: 90%;
   fill: white;
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
 }
-
 .hero-section_area-search .hero-section_area-search_btn:hover svg {
   width: 100%;
   fill: black;
 }
 </style>
-
