@@ -34,10 +34,11 @@ export default {
   components: {
     Add,
   },
-  methods: {
-    goToAdd(id) {
-      this.$router.push({ name: "Selectedlisting", params: { id: id } });
+  async  deleteAdd(id) {
+      // this.$router.push({ name: "Selectedlisting", params: { id: id } });
+
+    await axios.delete(`https://localhost:5001/Like/${id}`);
+    commit("removeAdd", id);
     },
-  },
 };
 </script>

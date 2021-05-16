@@ -85,6 +85,51 @@ export default {
       type: String,
     },
   },
+  async mounted() {
+
+          let token = localStorage.getItem("authToken");
+
+        var base64Url = token.split(".")[1];
+        var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+        var jsonPayload = decodeURIComponent(
+          atob(base64)
+            .split("")
+            .map(function(c) {
+              return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+            })
+            .join("")
+        );
+
+    let met = await axios.get(`https://localhost:5001/Users/get?Id=${JSON.parse(jsonPayload).sub}`);
+     console.log(met);  
+},
+  methods: {
+ async toFavs() {
+      let token = localStorage.getItem("authToken");
+
+        var base64Url = token.split(".")[1];
+        var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+        var jsonPayload = decodeURIComponent(
+          atob(base64)
+            .split("")
+            .map(function(c) {
+              return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+            })
+            .join("")
+        );
+       // console.log(JSON.parse(jsonPayload).sub)
+
+      await axios.post('https://localhost:5001/Like/like', {hid:this.id, uid:JSON.parse(jsonPayload).sub});
+
+       let met = await axios.get(`https://localhost:5001/Users/get?Id=${JSON.parse(jsonPayload).sub}`);
+     console.log(met);  
+    }
+  },
+
+  getlikedhouses() {
+    let met = axios.get('https://localhost:5001/Users/get');
+    console.log(met);
+  }
 };
 </script>
 
