@@ -39,13 +39,19 @@ namespace hfind.Repositories
 
         public async Task<House> GetHouseAsync(Guid id)
         {
+
+            
             var filter = filterBuilder.Eq(House => House.Id, id);
             return await itemsCollection.Find(filter).SingleOrDefaultAsync();
         }
 
         public async Task<IEnumerable<House>> GetHouseAsync(int page )
         {
-            return await itemsCollection.Find(new BsonDocument()).Limit(page).ToListAsync();
+            int limit=4;
+
+            int skipCount = (page - 1) * limit;
+
+            return await itemsCollection.Find(new BsonDocument()).Skip(skipCount).Limit(limit).ToListAsync();
         }
 
         public async Task UpdateHouseAsync(House House)

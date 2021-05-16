@@ -8,6 +8,7 @@ export const store = createStore({
     filters: [],
     filters2: [],
     editAdd: [],
+    reportedAdds: [],
     location: "",
     rent: 0,
     buy: 1,
@@ -35,19 +36,60 @@ export const store = createStore({
       (state.adds = state.adds.filter((add) => add.id !== id)),
     setEditAdd: (state, editAdd) => (state.editAdd = editAdd),
     setNewLocation: (state, location) => (state.location = location),
+    setReportedAdd: (state, reportedAdd) => (state.reportedAdds = reportedAdd),
   },
   actions: {
-    async fetchOwnAdds({ commit }, pageNumber) {
-      const response = await axios.get("https://localhost:5001/UserHouses/1", {
-        params: {
-          page: pageNumber,
-        },
-      });
-      commit("setAdds", response.data);
+    async fetchOwnAdds(
+      { commit },
+      {
+        page,
+        user,
+        location,
+        sellrent,
+        bedrooms,
+        bathrooms,
+        startPrice,
+        endPrice,
+        startSm,
+        endSm,
+      }
+    ) {
+      if (isNaN(sellrent)) sellrent = 3;
+      try {
+        const response = await axios.get(
+          `https://localhost:5001/UserHouses/${user}`,
+          {
+            params: {
+              page: page,
+              location: location,
+              sellrent: sellrent,
+              beds: bedrooms,
+              baths: bathrooms,
+              startPrice: startPrice,
+              endPrice: endPrice,
+              startSm: startSm,
+              endSm: endSm,
+            },
+          }
+        );
+        commit("setAdds", response.data);
+      } catch (error) {
+        console.log(error);
+      }
     },
     async fetchAdds(
       { commit },
-      { newValue, addLocation, path, bedrooms, bathrooms }
+      {
+        newValue,
+        addLocation,
+        path,
+        bedrooms,
+        bathrooms,
+        startPrice,
+        endPrice,
+        startSm,
+        endSm,
+      }
     ) {
       // console.log(newValue, addLocation, path, bedrooms, bathrooms);
       let choice;
@@ -62,6 +104,10 @@ export const store = createStore({
             page: newValue,
             beds: bedrooms,
             baths: bathrooms,
+            startPrice: startPrice,
+            endPrice: endPrice,
+            startSm: startSm,
+            endSm: endSm,
           },
         }
       );
@@ -107,6 +153,28 @@ export const store = createStore({
 
       commit("setEditAdd", changes);
     },
+    async reportAdd({}, id) {
+      console.log(id);
+      try {
+        const response = await axios.put(
+          `https://localhost:5001/Houses/report/${id}`,
+          {
+            report: 1,
+          }
+        );
+        if (response.status == 204) window.alert("Add Reported");
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async setReportedAdds({ commit }) {
+      const response = await axios.get("https://localhost:5001/reported", {
+        params: {
+          report: 1,
+        },
+      });
+      commit("setReportedAdd", response.data);
+    },
   },
   modules: {},
   getters: {
@@ -116,5 +184,6 @@ export const store = createStore({
     getFilters: (state) => state.filters,
     getFilters2: (state) => state.filters2,
     getLocation: (state) => state.location,
+    getReportedAdds: (state) => state.reportedAdds,
   },
 });
