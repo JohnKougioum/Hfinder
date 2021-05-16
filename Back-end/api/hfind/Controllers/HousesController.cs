@@ -61,7 +61,9 @@ public class HousesController : ControllerBase
           Baths = HouseDto.Baths,
           Description = HouseDto.Description,
            HeatingType = HouseDto.HeatingType,
+            ContentImage = HouseDto.ContentImage,
           CreatedDate = DateTimeOffset.UtcNow
+         
         };
         await repository.CreateHouseAsync(House);
         return CreatedAtAction(nameof(GetHouseAsync), new {id = House.Id}, House.AsDto());
@@ -86,6 +88,7 @@ public class HousesController : ControllerBase
           Baths = HouseDto.Baths,
           Description = HouseDto.Description,
            HeatingType = HouseDto.HeatingType,
+           ContentImage = HouseDto.ContentImage
       };
       await repository.UpdateHouseAsync(updatedHouse);
       return NoContent();
@@ -118,7 +121,7 @@ public class HousesController : ControllerBase
                  .Select(House => House.AsDto());
      return houses;
     }
-    [HttpPut("report/{id}")]
+   [HttpPut("report/{id}")]
     public async Task<ActionResult> ReportHouseAsync(Guid id,ReportHouseDto HouseDto){
       var existingHouse = await repository.GetHouseAsync(id);
       if (existingHouse is null)
@@ -139,9 +142,8 @@ public class HousesController : ControllerBase
      var houses = (await repository.GetHouseReportAsync(report))
                  .Select(House => House.AsDto());
      return houses;
-    }
    }
-  
+  }
 
 }
 

@@ -18,5 +18,8 @@ namespace hfind.Dtos
         public int Baths {get; init;} 
         public int HeatingType {get; init;}
          public string Description {get; init;}
+             public byte[] ContentImage { get; set; }
+
+         public int Report{get;init;}
     }
 }

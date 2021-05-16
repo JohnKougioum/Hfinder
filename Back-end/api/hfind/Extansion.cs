@@ -21,6 +21,8 @@ namespace hfind
                   Beds = House.Beds,
                   Baths = House.Baths,
                   Report = House.Report,
+                ContentImage = House.ContentImage,
+
                   CreatedDate = House.CreatedDate
      
         };
@@ -37,8 +39,16 @@ namespace hfind
           Lastname = User.Lastname,
           Phone  = User.Phone,
           Type = User.Type,
-          LikedHouses =User.LikedHouses,
           CreatedDateUser = User.CreatedDateUser
+        };
+ 
+    }
+     public static LikeHouseByUserDto AsDto(this LikeHouseByUser LikeHouseByUser)
+    {
+        return new LikeHouseByUserDto
+        {
+         UId =LikeHouseByUser.UId,
+         HId = LikeHouseByUser.HId
         };
     }
 }

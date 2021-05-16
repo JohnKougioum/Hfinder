@@ -19,6 +19,8 @@ namespace hfind.Entities
         public int HeatingType {get; init;}
         public string Description {get; init;}
         public int Report {get; init;}
+        public byte[] ContentImage { get; set; }
+
         public DateTimeOffset CreatedDate { get; init; }
 
 

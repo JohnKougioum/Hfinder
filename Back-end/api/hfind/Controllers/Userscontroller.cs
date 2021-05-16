@@ -82,18 +82,18 @@ public class Userscontroller : ControllerBase
       return NoContent();
     }
      [HttpPost("login/")]
-   public async Task<ActionResult> LoginUserAsync(LoginUserDto User)
+   public async Task<ActionResult> LoginUserAsync(LoginUserDto userDto)
     {
-      var usr = await repository.GetUserAsync(User.Username , User.Password);
+      var usr = await repository.GetUserAsync(userDto.Username , userDto.Password);
       if (usr != null){
 
                 var token = new JwtTokenBuilder()
                                     .AddSecurityKey(JwtSecurityKey.Create("key-value-token-expires"))
-                                    .AddSubject(Convert.ToString(User.Username))
+                                    .AddSubject(Convert.ToString(usr.Id))
                                     .AddIssuer("issuerTest")
                                     .AddAudience("bearerTest")
                                     .AddClaim("MembershipId", "111")
-                                    .AddExpiry(1)
+                                    .AddExpiry(5000)
                                     .Build();
 
                 return Ok(token.Value);

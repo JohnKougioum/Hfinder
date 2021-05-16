@@ -21,5 +21,6 @@ namespace hfind.Repositories
         Task DeleteHouseAsync(Guid id);
        Task<IEnumerable<House>> GetHouseLocAsync(string RegRegionion);
        Task<IEnumerable<House>> GetHouseReportAsync(int Report);
+    //    Task<House> GetCountHouseAsync();
     }
 }
