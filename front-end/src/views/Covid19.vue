@@ -40,15 +40,19 @@ export default {
 <style scoped>
 .Covid19 {
   padding-top: 15vh;
+  padding-left: 6vh;
 }
 
 .covid1 {
-  padding-top: 3vh;
+  padding-top: 1vh;
   font-size: larger;
 }
 
 .covid2 {
-  padding-top: 3vh;
+  padding-top: 7vh;
   font-size: large;
+}
+img{
+  width: 80px;
 }
 </style>
