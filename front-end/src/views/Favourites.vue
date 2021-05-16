@@ -96,6 +96,21 @@ export default {
         this.$store.commit("enterPageNumber", newVal);
       },
     },
+    "$route.query": {
+      immediate: true,
+      handler(newVal) {
+        const addLocation = this.$route.params.loc;
+        const newValue = this.PageNumber;
+        const path = this.$route.name;
+        let bedrooms = parseInt(this.$route.query.beds);
+        let bathrooms = parseInt(this.$route.query.baths);
+
+        if (isNaN(bedrooms)) bedrooms = 0;
+        if (isNaN(bathrooms)) bathrooms = 0;
+
+        this.fetchAdds({ newValue, addLocation, path, bedrooms, bathrooms });
+      },
+    },
   },
 };
 </script>
