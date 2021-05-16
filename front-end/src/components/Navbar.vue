@@ -10,10 +10,10 @@
           <router-link to="/newlisting">Νέα αγγελία</router-link>
         </li>
         <li>
-          <router-link to="/buy/:id">Αγορά</router-link>
+          <a id="1" @click="handleClick('1')">Αγορά</a>
         </li>
         <li>
-          <a href="#">Ενοικίαση</a>
+          <a id="2" @click="handleClick('0')">Ενοικίαση</a>
         </li>
         <li>
           <router-link v-show="!auth" to="/Login" class="login-btn">Σύνδεση</router-link>
@@ -21,6 +21,16 @@
         <li>
           <router-link v-show="!auth" to="/Register" class="register-btn">Εγγραφή</router-link>
         </li>
+        <Dropdown v-show="auth" href="#" class="login-btn" :items="User" >
+              <img src="../assets/images/user.png" alt="Admin" width="40"><i class="fas fa-angle-down"></i> 
+              <div class="right">
+                  <ul>
+                    <li>
+                      <a href="#"><img src="../assets/images/user.png" alt="Admin" width="40"><i class="fas fa-angle-down"></i></a>
+                    </li>
+                </ul>
+              </div>  
+         </Dropdown> 
         <li>
           <button v-show="auth" class="login-btn" @click="logout">Logout</button>
         </li>
@@ -31,11 +41,26 @@
 
 <script>
 import Auth from "../auth";
+import Dropdown from '../components/Dropdown.vue';
 export default {
   name: "Navbar",
+  components: {
+    Dropdown
+  },
   data: function() {
     return {
       auth: "",
+      User: [
+        {
+          title: 'Dashboard',
+          link: '/Dashboard',
+          class: 'Btn1'
+        },
+        {
+          title: 'Favourites',
+          link:'#'
+        },
+      ]
     };
   },
   created() {
@@ -45,6 +70,9 @@ export default {
     logout: function(){
       localStorage.clear();
       window.location.href = "http://localhost:8080/";
+    },
+    handleClick(sel_option){
+      document.getElementById('search-option').value = sel_option;
     }
   }
 };
