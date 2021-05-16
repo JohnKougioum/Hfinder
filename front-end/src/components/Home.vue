@@ -86,7 +86,7 @@
         <div class="covid-banner-content">
           <div class="covid-banner-content-wrapper">
             <div class="covid-banner-content-wrapper-logo">
-              <h1>Hfinder Logo</h1>
+              <router-link to="/"><img src="../assets/images/HFINDER.svg" alt="hfinderLOGO" style="width:95px;padding-right:24px;padding-top:12px"></router-link>
             </div>
             <div class="covid-banner-content-wrapper-details">
               <p>
