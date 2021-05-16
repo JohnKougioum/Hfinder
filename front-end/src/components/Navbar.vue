@@ -3,7 +3,7 @@
     <nav>
       <div class="logo">
         <!-- <h4>Hfind</h4> -->
-        <router-link to="/">Hfinder</router-link>
+        <router-link to="/"><img src="../assets/images/HFINDER.png" alt="mpourdelo" style="width:130px"></router-link>
       </div>
       <ul class="nav-links">
         <li>
@@ -43,7 +43,8 @@ export default {
   },
   methods: {
     logout: function(){
-      console.log("logout");
+      localStorage.clear();
+      window.location.href = "http://localhost:8080/";
     }
   }
 };
