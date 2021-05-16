@@ -16,7 +16,7 @@
                     <label id="login-form-labels" for="username">Όνομα χρήστη</label><br>
                     <input v-model="username" type="text" name="username"><br>                
                     <label id="login-form-labels" for="passwd">Κωδικός πρόσβασης</label><br>
-                    <input v-model="passwd" type="text" name="passwd">              <br>
+                    <input v-model="passwd" type="password" name="passwd">              <br>
                     <input type="checkbox" name="pass" id="store-pass" >
                     <label class="store-password" for="store-pass">Αποθήκευση κωδικού πρόσβασης</label><br>
                     <input id="login-button" type="submit" value="Σύνδεση"> 
@@ -109,7 +109,7 @@ body{
           margin-bottom: 1px;
          margin-top: 4rem;
          font-style: normal;}
-         input[type=text], select {
+         input[type=text],input[type=password], select {
             height: 50px;
             width: 40%;
             padding: 15px 25px;
