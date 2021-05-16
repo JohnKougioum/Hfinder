@@ -13,6 +13,7 @@ import Covid19 from "../views/Covid19";
 import Favourites from "../views/Favourites";
 import Selectedlisting from "../components/Selectedlisting";
 import PageNotFound from "../components/PageNotFound";
+import Contact from '../components/Contact'
 import AuthFunction from "../auth";
 
 const routes = [
@@ -89,6 +90,11 @@ const routes = [
     name: "Selectedlisting",
     component: Selectedlisting,
     props: true,
+  },
+  {
+    path: '/Contact',
+    name: 'Contact',
+    component: Contact
   },
   {
     path: "/:catchAll(.*)",

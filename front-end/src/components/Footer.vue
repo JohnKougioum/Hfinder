@@ -13,7 +13,7 @@
         <h2>Hfinder</h2>
         <ul>
           <li><router-link to="/About_us">Σχετικά με εμάς</router-link></li>
-          <li><a href="#">Επικοινωνία</a></li>
+          <li><router-link to="/Contact">Επικοινωνία</router-link></li>
         </ul>
       </div>
     </div>
