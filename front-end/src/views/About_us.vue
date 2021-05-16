@@ -31,12 +31,14 @@ text-align: center;
 
 .About-us-container{  
 padding-top: 15vh;
-
+padding-left: 100px;
 }
 
 
 h1 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-top: 2vh;
+    padding-bottom: 3vh;
 }
 p {
     font-size: larger;
