@@ -45,12 +45,13 @@ export default {
    methods: {
       async handleSubmit(){
          try {
-            await axios.post('LINK_HERE', {
+            const response = await axios.post('https://localhost:5001/Users/login', {
                username: this.username,
-               passwd: this.passwd
+               password: this.passwd
             });
-            
-            this.$router.push('/');
+            localStorage.setItem('authToken', response.data);
+            window.location.href = "http://localhost:8080/";
+            //this.$router.push('/');
          } catch (err) {
             console.log(err);
          }

@@ -16,10 +16,13 @@
           <a href="#">Ενοικίαση</a>
         </li>
         <li>
-          <router-link to="/Login" class="login-btn">Σύνδεση</router-link>
+          <router-link v-show="!auth" to="/Login" class="login-btn">Σύνδεση</router-link>
         </li>
         <li>
-          <router-link to="/Register" class="register-btn">Εγγραφή</router-link>
+          <router-link v-show="!auth" to="/Register" class="register-btn">Εγγραφή</router-link>
+        </li>
+        <li>
+          <button v-show="auth" class="login-btn" @click="logout">Logout</button>
         </li>
       </ul>
     </nav>
@@ -27,8 +30,22 @@
 </template>
 
 <script>
+import Auth from "../auth";
 export default {
   name: "Navbar",
+  data: function() {
+    return {
+      auth: "",
+    };
+  },
+  created() {
+    this.auth = Auth.isAuthenticated();
+  },
+  methods: {
+    logout: function(){
+      console.log("logout");
+    }
+  }
 };
 </script>
 

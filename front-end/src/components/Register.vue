@@ -61,13 +61,13 @@ export default {
    methods: {
       async handleSubmit(){
          try {
-            await axios.post('LINK_HERE', {
+            await axios.post('https://localhost:5001/Users/register', {
+                username: this.username,
+                password: this.passwd,
+                email: this.email,
                 firstname: this.firstname,
                 lastname: this.lastname,
-                username: this.username,
-                email: this.email,
-                passwd: this.passwd,
-                phone_num: this.phone_num
+                phone_num: parseInt(this.phone_num)
             });
             
             this.$router.push('/Login');

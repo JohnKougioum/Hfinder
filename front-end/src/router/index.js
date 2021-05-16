@@ -12,6 +12,7 @@ import Covid19 from "../views/Covid19";
 import Favourites from "../views/Favourites";
 import Selectedlisting from "../components/Selectedlisting";
 import PageNotFound from "../components/PageNotFound";
+import AuthFunction from "../auth";
 
 const routes = [
   {
@@ -39,6 +40,11 @@ const routes = [
     path: "/Newlisting",
     name: "Newlisting",
     component: Newlisting,
+    beforeEnter: (to, from, next) => {
+      if (!AuthFunction.isAuthenticated())
+        next((window.location.href = 'http://localhost:8080/Login'));
+      next();
+    }
   },
   {
     path: "/Editprofile",
